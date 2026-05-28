@@ -574,25 +574,17 @@
     margin-top: 0;
   }
   .conclusion-box p { color: rgba(255,255,255,0.8); }
-  .reco-list {
-    list-style: none;
-    padding: 0;
-    margin: 1.25rem 0 0;
-    counter-reset: reco;
-  }
-  .reco-list li {
-    counter-increment: reco;
+  .reco-list { margin: 1.25rem 0 0; }
+  .reco-row {
     display: flex;
     gap: 1rem;
+    align-items: flex-start;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.82);
   }
-  .reco-list li:last-child { margin-bottom: 0; border-bottom: none; }
-  .reco-list li::before {
-    content: counter(reco);
+  .reco-row:last-child { margin-bottom: 0; border-bottom: none; }
+  .reco-num {
     flex-shrink: 0;
     width: 26px;
     height: 26px;
@@ -604,13 +596,14 @@
     justify-content: center;
     font-weight: 700;
     font-size: 0.8rem;
-    line-height: 1;
-    margin-top: 2px;
+    margin-top: 1px;
   }
-  .reco-list li b {
-    color: var(--gold-light);
-    font-weight: 600;
+  .reco-text {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.65;
   }
+  .reco-text b { color: var(--gold-light); font-weight: 600; }
 
   /* RISK TABLE — colour-coded */
   .risk-high { color: #C0392B; font-weight: 600; }
@@ -1290,12 +1283,24 @@
   <div class="conclusion-box">
     <h3>Formal Recommendations — Finance &amp; Accounting Department</h3>
     <p>The Finance &amp; Accounting Department is formally recommended to endorse the following actions:</p>
-    <ol class="reco-list">
-      <li>Approve the allocation of capital and operational budget for Phase 1 ERP procurement, with an indicative budget ceiling of <b>AUD 250,000</b> for Year 1 implementation costs.</li>
-      <li>Commission a formal vendor evaluation process for cloud ERP selection, with the Finance Department represented on the evaluation committee to ensure financial reporting requirements are prioritised.</li>
-      <li>Endorse the IoT sensor network rollout as Phase 2 of the implementation, with a budget envelope of <b>AUD 120,000</b> and a target completion date of Month 6 from project commencement.</li>
-      <li>Mandate a <b>Month 12 post-implementation review</b> with quantitative comparison of pre- and post-implementation values for Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag incidence rate, Order_Fulfilment_Days, and Service_Tickets volume.</li>
-    </ol>
+    <div class="reco-list">
+      <div class="reco-row">
+        <div class="reco-num">1</div>
+        <div class="reco-text">Approve the allocation of capital and operational budget for Phase 1 ERP procurement, with an indicative budget ceiling of <b>AUD 250,000</b> for Year 1 implementation costs.</div>
+      </div>
+      <div class="reco-row">
+        <div class="reco-num">2</div>
+        <div class="reco-text">Commission a formal vendor evaluation process for cloud ERP selection, with the Finance Department represented on the evaluation committee to ensure financial reporting requirements are prioritised.</div>
+      </div>
+      <div class="reco-row">
+        <div class="reco-num">3</div>
+        <div class="reco-text">Endorse the IoT sensor network rollout as Phase 2 of the implementation, with a budget envelope of <b>AUD 120,000</b> and a target completion date of Month 6 from project commencement.</div>
+      </div>
+      <div class="reco-row">
+        <div class="reco-num">4</div>
+        <div class="reco-text">Mandate a <b>Month 12 post-implementation review</b> with quantitative comparison of pre- and post-implementation values for Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag incidence rate, Order_Fulfilment_Days, and Service_Tickets volume.</div>
+      </div>
+    </div>
     <p style="margin-top:1.25rem; font-style:italic; font-size:0.9rem;">This proposed investment positions the company to recover lost gross profit, restore budget credibility, and build the digital infrastructure necessary to compete effectively in an increasingly digital retail environment. This analyst is available to present these recommendations in further detail and to support the vendor evaluation process upon management request.</p>
   </div>
 </section>
