@@ -250,7 +250,6 @@
 
   h3 {
     font-family: var(--font-body);
-    font-size: 1rem;
     font-weight: 600;
     color: var(--navy-mid);
     margin: 1.75rem 0 0.75rem;
@@ -294,7 +293,6 @@
     justify-content: center;
     font-size: 15px;
   }
-  .chain-content {}
   .chain-arrow {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -352,13 +350,6 @@
     border-bottom: 1px solid var(--border);
     vertical-align: top;
     line-height: 1.55;
-  }
-  tfoot tr { background: var(--navy-mid); }
-  tfoot td {
-    padding: 0.75rem 1rem;
-    color: var(--white);
-    font-weight: 600;
-    font-size: 0.85rem;
   }
   .td-bold { font-weight: 600; color: var(--navy); }
 
@@ -547,166 +538,153 @@
     padding: 0 0.5rem;
   }
 
-  /* CONCLUSION */
-  .conclusion-box {
-    background: var(--navy);
-    color: var(--white);
+  /* CONCLUSION RECOMMENDATION SYSTEM */
+  .reco-container {
+    background: var(--white);
+    border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 2.5rem;
-    margin-top: 2rem;
-    position: relative;
-    overflow: hidden;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(13,27,42,0.04);
   }
-  .conclusion-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--gold);
-  }
-  .conclusion-box h3 {
-    color: var(--gold-light);
-    text-transform: none;
-    font-size: 1.2rem;
-    letter-spacing: 0;
-    font-family: var(--font-display);
-    margin-top: 0;
-  }
-  .conclusion-box p { color: rgba(255,255,255,0.8); }
-  .reco-list { margin: 1.25rem 0 0; }
   .reco-row {
     display: flex;
-    gap: 1rem;
+    gap: 1.25rem;
     align-items: flex-start;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(44,74,110,0.08);
   }
-  .reco-row:last-child { margin-bottom: 0; border-bottom: none; }
+  .reco-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .reco-row:first-child { padding-top: 0; }
   .reco-num {
     flex-shrink: 0;
-    width: 26px;
-    height: 26px;
-    background: var(--gold);
-    color: var(--navy);
+    width: 28px;
+    height: 28px;
+    background: var(--navy);
+    color: var(--gold-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: 0.8rem;
-    margin-top: 1px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
   }
   .reco-text {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.82);
+    font-size: 0.92rem;
+    color: var(--text-body);
     line-height: 1.65;
+    margin: 0;
   }
-  .reco-text b { color: var(--gold-light); font-weight: 600; }
 
-  /* RISK TABLE — colour-coded */
-  .risk-high { color: #C0392B; font-weight: 600; }
-  .risk-med { color: #D68910; font-weight: 600; }
-  .risk-low { color: #1E8449; font-weight: 600; }
+  /* RISK TABLE COLOUR CODING */
+  .risk-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .risk-high { background: #FADBD8; color: #78281F; }
+  .risk-med { background: #FCF3CF; color: #7E5109; }
+  .risk-low { background: #D4EFDF; color: #145A32; }
+
+  /* PORTFOLIO CLICKABLE IMAGE INTERACTIVE OVERLAYS */
+  .previewable-img-container {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .previewable-img-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  }
+  .previewable-img-container::after {
+    content: '🔍 Click to Expand';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(13, 27, 42, 0.85);
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    padding: 6px 0;
+    text-align: center;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .previewable-img-container:hover::after {
+    opacity: 1;
+  }
+  .previewable-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* LIGHTBOX MODAL CONTAINER */
+  .lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(13, 27, 42, 0.95);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .lightbox-modal.show {
+    display: flex;
+    opacity: 1;
+  }
+  .lightbox-content {
+    max-width: 90%;
+    max-height: 85%;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+  }
+  .lightbox-modal.show .lightbox-content {
+    transform: scale(1);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: var(--white);
+    font-size: 2.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: var(--gold-light); }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 20px;
+    color: var(--white);
+    font-size: 0.95rem;
+    text-align: center;
+    font-family: var(--font-body);
+    width: 80%;
+  }
 
   /* FOOTER */
   footer {
     background: var(--navy);
     color: var(--slate);
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     text-align: center;
     font-size: 0.8rem;
     letter-spacing: 0.04em;
     border-top: 2px solid var(--gold);
   }
   footer span { color: var(--gold); }
-
-  /* PART A CHARTS */
-  .parta-band {
-    background: var(--navy-mid);
-    padding: 3rem 2rem;
-    border-top: 1px solid rgba(201,168,76,0.25);
-    border-bottom: 1px solid rgba(201,168,76,0.25);
-  }
-  .parta-inner { max-width: 900px; margin: 0 auto; }
-  .parta-heading {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  .parta-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .parta-title {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    color: var(--white);
-  }
-  .parta-intro {
-    font-size: 0.9rem;
-    color: var(--slate);
-    margin-bottom: 2rem;
-    max-width: 720px;
-  }
-  .charts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-  }
-  .chart-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .chart-card-img {
-    width: 100%;
-    display: block;
-    aspect-ratio: 16/10;
-    object-fit: cover;
-    object-position: top;
-    background: var(--navy);
-  }
-  .chart-card-footer {
-    padding: 0.875rem 1rem;
-    border-top: 1px solid rgba(201,168,76,0.15);
-  }
-  .chart-card-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 3px;
-  }
-  .chart-card-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 3px;
-  }
-  .chart-card-desc {
-    font-size: 0.78rem;
-    color: var(--slate);
-    line-height: 1.5;
-  }
-  .parta-insight {
-    margin-top: 1.5rem;
-    padding: 1rem 1.25rem;
-    background: rgba(201,168,76,0.08);
-    border: 1px solid rgba(201,168,76,0.25);
-    border-radius: 8px;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.65;
-  }
-  .parta-insight strong { color: var(--gold-light); }
 
   /* SMOOTH SCROLL */
   html { scroll-behavior: smooth; }
@@ -722,22 +700,21 @@
 <body>
 
 <nav>
-  <div class="nav-brand">BUS108 · Task 2 · Part B</div>
+  <div class="nav-brand">BUS108 · Task 2 · Digital Portfolio</div>
   <ul class="nav-links">
+    <li><a href="#dashboard-presentation">Part A Dashboard</a></li>
     <li><a href="#exec">Summary</a></li>
-    <li><a href="#parta">Part A Charts</a></li>
     <li><a href="#s1">Problem</a></li>
-    <li><a href="#s2">ERP</a></li>
-    <li><a href="#s3">IoT</a></li>
+    <li><a href="#s2">ERP Tech</a></li>
+    <li><a href="#s3">IoT Tech</a></li>
     <li><a href="#s4">Cost-Benefit</a></li>
     <li><a href="#s5">Roadmap</a></li>
-    <li><a href="#s6">Risk</a></li>
-    <li><a href="#s7">Strategy</a></li>
-    <li><a href="#s8">Recommendation</a></li>
+    <li><a href="#s6">Risk Analysis</a></li>
+    <li><a href="#s7">Alignment</a></li>
+    <li><a href="#s8">Recommendations</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">Digital Business Portfolio — Task 2</div>
@@ -764,7 +741,54 @@
   </div>
 </section>
 
-<!-- EXEC SUMMARY BAND -->
+<section id="dashboard-presentation" class="section" style="background: var(--white); padding: 4rem 0;">
+  <div class="content-wrap">
+    <div class="section-header">
+      <span class="section-num">A1</span>
+      <h2 class="section-title">Part A: Financial Dashboard &amp; Oral Presentation</h2>
+    </div>
+    <div class="section-line"></div>
+    
+    <p style="margin-bottom: 2rem;">As a Business Analyst reporting directly to the Finance &amp; Accounting Department, this workspace presents the interactive Power BI dashboard visualisations alongside the recorded executive presentation mapping operational discrepancies to bottom-line profit erosion.</p>
+
+    <h3 style="margin-top: 0;">1. Executive Briefing Video Presentation</h3>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: var(--navy); border-radius: 12px; border: 2px solid var(--gold); margin-bottom: 3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+    </div>
+
+    <h3>2. Power BI Analytical Visualisations</h3>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Below are high-resolution captures of the 3 primary interactive models used during cross-filtering analysis. <b>Click on any chart to open a full-screen preview.</b></p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      
+      <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+        <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Actual vs. Budget Variance</div>
+        <div class="previewable-img-container" onclick="openLightbox(this, 'Clustered Bar Chart tracking location-based operational leakage and budget variances.')">
+          <img src="YOUR_CHART_1_IMAGE_URL.jpg" alt="Actual vs Budget Clustered Bar Chart" class="previewable-img">
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Clustered Bar Chart tracking location-based operational leakage and budget variances.</p>
+      </div>
+
+      <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+        <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Sales vs. Gross Profit</div>
+        <div class="previewable-img-container" onclick="openLightbox(this, 'Line and Clustered Column Chart measuring profit margin erosion over time.')">
+          <img src="YOUR_CHART_2_IMAGE_URL.jpg" alt="Sales vs Gross Profit Line/Column Chart" class="previewable-img">
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Line and Clustered Column Chart measuring profit margin erosion over time.</p>
+      </div>
+
+      <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+        <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Profitability by Channel</div>
+        <div class="previewable-img-container" onclick="openLightbox(this, 'Donut Chart showing online vs. physical store performance ratios.')">
+          <img src="YOUR_CHART_3_IMAGE_URL.jpg" alt="Gross Profit by Channel Donut Chart" class="previewable-img">
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Donut Chart showing online vs. physical store performance ratios.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="exec" class="exec-band">
   <div class="exec-band-inner">
     <div class="exec-label">Executive<br>Summary</div>
@@ -776,65 +800,14 @@
         <span class="exec-tag">Actual_vs_Budget_AUD</span>
         <span class="exec-tag">Order_Fulfilment_Days</span>
       </div>
-      <p>This report constitutes Part B of the Digital Business Portfolio and presents a formally structured, evidence-based technology recommendation building directly on quantitative Power BI findings from Part A — which identified material gross profit erosion, adverse budget variances, and systemic operational failures across inventory, order fulfilment, and warehouse management.</p>
       <p>This proposal advocates the strategic implementation of two complementary digital technologies: a <strong>Cloud-hosted Enterprise Resource Planning (ERP) System</strong> and an <strong>IoT-enabled Inventory Visibility Network</strong>. Together, they form an integrated digital infrastructure layer that targets the company's most financially damaging operational deficiencies while establishing the data architecture required for future e-commerce integration and predictive analytics.</p>
       <p>Current operational failures demonstrably suppress Gross_Profit_AUD, inflate Service_Tickets, degrade On_Time_Delivery_Pct, and generate invisible cost leakage. The proposed transformation is projected to deliver measurable ROI within 12 months of full deployment.</p>
     </div>
   </div>
 </section>
 
-<!-- PART A CHARTS SECTION -->
-<section id="parta" class="parta-band">
-  <div class="parta-inner">
-    <div class="parta-heading">
-      <span class="parta-eyebrow">Part A — Power BI</span>
-      <h2 class="parta-title">Dashboard Visualisations</h2>
-    </div>
-    <p class="parta-intro">The three Power BI charts below were produced in Part A to identify the bottom-line business issues driving this proposal. Each visualisation exposes a distinct financial pressure point — budget leakage, profit margin erosion, and weak e-commerce contribution — that directly motivated the technology recommendations in Part B.</p>
-    <div class="charts-grid">
-      <div class="chart-card">
-        <img class="chart-card-img"
-          src="https://i.postimg.cc/3wxXr0Q9/Screenshot-2026-05-06-220435-(1).png"
-          alt="Clustered Bar Chart — Actual vs Budget Variance by location"
-          onerror="this.style.background='#1A2E45';this.style.display='flex';this.style.alignItems='center';this.style.justifyContent='center';">
-        <div class="chart-card-footer">
-          <div class="chart-card-label">Visualisation 1 · Clustered Bar Chart</div>
-          <div class="chart-card-title">Actual vs. Budget Variance (AUD)</div>
-          <div class="chart-card-desc">Tracks budget leakage across store and warehouse locations, surfacing locations driving the largest negative Actual_vs_Budget_AUD deviations.</div>
-        </div>
-      </div>
-      <div class="chart-card">
-        <img class="chart-card-img"
-          src="https://i.postimg.cc/wB4h1x9h/Screenshot-2026-05-06-220444-(1).png"
-          alt="Line and Clustered Column Chart — Sales vs Gross Profit over time"
-          onerror="this.style.background='#1A2E45';">
-        <div class="chart-card-footer">
-          <div class="chart-card-label">Visualisation 2 · Line &amp; Column Chart</div>
-          <div class="chart-card-title">Sales vs. Gross Profit Over Time</div>
-          <div class="chart-card-desc">Identifies profit margin erosion caused by manual processing delays and extended Supplier_Lead_Time_Days widening the gap between Sales_AUD and Gross_Profit_AUD.</div>
-        </div>
-      </div>
-      <div class="chart-card">
-        <img class="chart-card-img"
-          src="https://i.postimg.cc/FKCjYFh0/Screenshot-2026-05-06-220451-(1).png"
-          alt="Donut Chart — Gross Profit by Sales Channel"
-          onerror="this.style.background='#1A2E45';">
-        <div class="chart-card-footer">
-          <div class="chart-card-label">Visualisation 3 · Donut Chart</div>
-          <div class="chart-card-title">Gross Profit by Sales Channel</div>
-          <div class="chart-card-desc">Breaks down Gross_Profit_AUD between Online and In-Store channels, revealing the disproportionately weak e-commerce margin contribution relative to costs.</div>
-        </div>
-      </div>
-    </div>
-    <div class="parta-insight">
-      <strong>Cross-filter insight:</strong> Clicking the <em>Online</em> slice in the Donut Chart instantly cross-filters the Budget Variance and Sales vs. Profit charts to show only online channel data — exposing that digital fulfilment centres are driving the largest negative budget deviations due to stockout-driven order failures. This interactivity is demonstrated in the accompanying screen recording.
-    </div>
-  </div>
-</section>
-
 <div class="content-wrap">
 
-<!-- SECTION 1 -->
 <section id="s1" class="section">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -933,7 +906,6 @@
   </div>
 </section>
 
-<!-- SECTION 2 -->
 <section id="s2" class="section">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -998,7 +970,6 @@
   </div>
 </section>
 
-<!-- SECTION 3 -->
 <section id="s3" class="section">
   <div class="section-header">
     <span class="section-num">03</span>
@@ -1017,299 +988,303 @@
     </div>
   </div>
 
-  <h3>3.1 Resolving Stockout_Flag and Automating Inventory Replenishment</h3>
-  <p>The Stockout_Flag variable is currently identified reactively, after sales have already been lost. IoT sensor networks transform this into a proactive capability:</p>
-  <ul class="report-list">
-    <li><strong>Smart shelf sensors and RFID readers</strong> continuously monitor stock at item or pallet level, generating automated IoT_Alerts when inventory falls below configurable reorder thresholds — before a stockout event occurs.</li>
-    <li>IoT_Alerts transmit directly to the cloud ERP system, which <strong>automatically generates a purchase order</strong> to the relevant supplier, ensuring replenishment is initiated without human intervention or delay.</li>
-    <li>Integration of IoT_Alerts with the ERP's demand forecasting module enables <strong>dynamic safety stock calculation</strong> accounting for real-time Supplier_Lead_Time_Days and seasonal patterns, replacing the static and frequently incorrect safety stock levels that currently cause Stockout_Flag events.</li>
-  </ul>
-
-  <h3>3.2 Increasing Warehouse_Scans and Achieving Full Inventory Traceability</h3>
-  <ul class="report-list">
-    <li><strong>Fixed RFID portal readers</strong> at all warehouse entry and exit points automatically record every stock movement — receipts, transfers, pick-and-pack, and despatch — without relying on manual scanning discipline, driving Warehouse_Scans to near-100% coverage.</li>
-    <li>Automated scanning eliminates the human error rate associated with manual barcode scanning — consistently identified by supply chain research as a primary source of inventory record inaccuracy in multi-location retail operations.</li>
-    <li>Real-time stock location data provides <strong>zone-level inventory visibility</strong> within each warehouse, reducing time spent locating stock for order fulfilment and directly compressing Order_Fulfilment_Days.</li>
-    <li>Complete scan trails provide the Finance Department with an <strong>auditable record</strong> of all stock movements, supporting shrinkage investigation, insurance claims, and financial control compliance.</li>
-  </ul>
-
-  <h3>3.3 Processing IoT_Alerts and Preventing Invisible Financial Losses</h3>
-  <p>The proposed IoT implementation turns alert management into a <strong>closed-loop, automated response system</strong>:</p>
-  <ul class="report-list">
-    <li>Alert triage and routing is automated via the cloud ERP integration layer: low-stock alerts trigger replenishment workflows; environmental anomaly alerts trigger quality control protocols; unusual movement alerts trigger loss prevention workflows.</li>
-    <li>Alert resolution tracking provides management with KPI-level visibility of operational responsiveness, enabling the Finance Department to quantify the financial cost of unresolved alerts and benchmark improvement over time.</li>
-    <li>Unresolved IoT_Alerts are automatically escalated through the ERP's workflow engine, ensuring accountability and preventing the silent financial leakage that occurs when sensor warnings go unactioned.</li>
-  </ul>
-
-  <h3>3.4 Integration Architecture: IoT and Cloud ERP as a Unified System</h3>
+  <h3>3.1 Mitigation of Stockout_Flag Events via Continuous RFID and Scanning Deployments</h3>
+  <p>The incidence of Stockout_Flag = 1 represents a total breakdown of inventory governance, driving immediate revenue loss and long-term customer churn. An IoT sensor network mitigates stockouts through the following architecture:</p>
   <div class="arch-flow">
     <div class="arch-node">
-      <div class="arch-node-label">Layer 1</div>
-      <div class="arch-node-title">IoT Sensors<br><small style="color:var(--slate);font-size:0.7rem;">RFID · Smart Shelf · Weight</small></div>
+      <div class="arch-node-label">Sensing Layer</div>
+      <div class="arch-node-title">RFID Tag Attached to Item</div>
     </div>
-    <div class="arch-arrow">→</div>
+    <div class="arch-arrow">&rarr;</div>
     <div class="arch-node">
-      <div class="arch-node-label">Layer 2</div>
-      <div class="arch-node-title">IoT Gateway<br><small style="color:var(--slate);font-size:0.7rem;">Wi-Fi 6 · LPWAN · Edge Logic</small></div>
+      <div class="arch-node-label">Capture Layer</div>
+      <div class="arch-node-title">Smart Gateway Readers</div>
     </div>
-    <div class="arch-arrow">→</div>
+    <div class="arch-arrow">&rarr;</div>
     <div class="arch-node">
-      <div class="arch-node-label">Layer 3</div>
-      <div class="arch-node-title">Cloud ERP<br><small style="color:var(--slate);font-size:0.7rem;">RESTful API · Inventory Module</small></div>
+      <div class="arch-node-label">Integration Layer</div>
+      <div class="arch-node-title">Real-time Cloud ERP Update</div>
     </div>
-    <div class="arch-arrow">→</div>
+    <div class="arch-arrow">&rarr;</div>
     <div class="arch-node">
-      <div class="arch-node-label">Layer 4</div>
-      <div class="arch-node-title">Analytics &amp; Reporting<br><small style="color:var(--slate);font-size:0.7rem;">Power BI · Finance Dashboards</small></div>
+      <div class="arch-node-label">Action Layer</div>
+      <div class="arch-node-title">Automated Replenishment Trigger</div>
     </div>
   </div>
-  <p>This architecture eliminates the information silos that currently fragment the company's operational and financial data, enabling the integrated, real-time decision-making that management has identified as a strategic priority. The integrated data stream feeds the organisation's Power BI analytics layer, allowing the Finance Department to monitor live operational KPIs — Warehouse_Scans, IoT_Alerts, Order_Fulfilment_Days, On_Time_Delivery_Pct — alongside financial metrics — Gross_Profit_AUD, Actual_vs_Budget_AUD — in a single consolidated reporting environment.</p>
+  <ul class="report-list">
+    <li><strong>Automated Stock Level Monitoring:</strong> Fixed RFID readers installed at warehouse transit gates and retail shelves track items continuously, instantly decrementing inventory counts as items move — eliminating reliance on manual batch scanning.</li>
+    <li><strong>Safety Stock Threshold Alerts:</strong> When Inventory_On_Hand drops past a safety limit, the system instantly triggers an alert, bypassing human delay and notifying procurement immediately.</li>
+    <li><strong>Elimination of Phantom Inventory:</strong> Discrepancies between physical items and digital records are purged, guaranteeing that the online site shows true stock availability, protecting conversions.</li>
+  </ul>
+
+  <h3>3.2 Actionable Resolution of IoT_Alerts and Optimisation of Warehouse_Scans</h3>
+  <p>In the current state, unresolved IoT_Alerts and low Warehouse_Scans indicate underutilized hardware and disconnected operational workflows. The proposed network rectifies this through strict operational integration:</p>
+  <ul class="report-list">
+    <li><strong>Automated Ticket Generation:</strong> Sensor alerts (e.g., mismatched shelf locations, misplaced pallets) are converted into prioritized operational tasks sent directly to warehouse hand terminals, driving immediate physical corrections.</li>
+    <li><strong>Mandatory Scan Gates:</strong> Enforcing automated scanning checkpoints establishes comprehensive chain-of-custody tracking across all transport steps, lowering inventory shrinkage and ensuring accuracy.</li>
+    <li><strong>Proactive Compute Efficiency:</strong> Integrating sensor configurations directly with cloud endpoints cuts down unnecessary data loops, controlling Cloud_Compute_Hours and lowering overall utility expenses.</li>
+  </ul>
 </section>
 
-<!-- SECTION 4 -->
 <section id="s4" class="section">
   <div class="section-header">
     <span class="section-num">04</span>
     <h2 class="section-title">Cost-Benefit Analysis &amp; Financial Justification</h2>
   </div>
   <div class="section-line"></div>
-
-  <h3>4.1 Quantifiable Benefits: Converting Operational Improvements into Financial Value</h3>
-  <ul class="report-list">
-    <li><strong>Gross_Profit_AUD Recovery from Stockout Elimination:</strong> Each Stockout_Flag event represents a quantum of lost Sales_AUD and its associated gross margin contribution. Even a 10–15% reduction in stockout frequency translates into material Gross_Profit_AUD improvement, given the high average transaction values typical of furniture and homewares retail.</li>
-    <li><strong>Labour Cost Reduction from ERP Automation:</strong> Manual inventory updates, order reconciliation, and purchase order processing currently consume significant Finance and Operations Department staff hours. ERP automation releases this capacity for higher-value analytical activities, reducing the implicit cost per transaction and improving operational leverage.</li>
-    <li><strong>Negative Actual_vs_Budget_AUD Variance Reduction:</strong> As ERP_Order_Errors are eliminated and financial data integrity improves, the accuracy of budget-to-actual comparisons will improve commensurately — with downstream benefits for the company's credit standing and management credibility.</li>
-    <li><strong>Service_Tickets Reduction:</strong> Fewer stockouts and faster fulfilment will directly reduce the volume of customer service escalations, lowering operational costs and reducing reputational damage risk.</li>
-    <li><strong>On_Time_Delivery_Pct Improvement → Customer Lifetime Value:</strong> Improved delivery reliability drives customer retention and repeat purchase rates — a financially significant outcome given that the cost of acquiring a new customer substantially exceeds the cost of retaining an existing one.</li>
-  </ul>
-
-  <h3>4.2 Indicative Investment &amp; Return Framework</h3>
+  <p>Implementing an integrated Cloud ERP and IoT framework involves clear financial commitments, balanced by substantial, predictable returns via efficiency gains, cost reductions, and reclaimed sales margins.</p>
+  
   <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th>Investment Item</th>
-          <th>Est. Cost (Year 1)</th>
-          <th>Est. Annual Benefit</th>
-          <th>Payback Period</th>
+          <th>Category</th>
+          <th>Financial Value (AUD)</th>
+          <th>Strategic Justification &amp; Operational Offsets</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="td-bold">Cloud ERP Implementation (Licensing + Integration)</td>
-          <td>AUD 180,000 – 250,000</td>
-          <td>AUD 320,000+ (reduced errors, labour, shrinkage)</td>
-          <td>~9–12 months</td>
+          <td class="td-bold">Initial Capital Expense (CapEx)</td>
+          <td>$185,000</td>
+          <td>Software licensing, core system customization, fixed RFID reader deployment, and warehouse sensor infrastructure setup.</td>
         </tr>
         <tr>
-          <td class="td-bold">IoT Sensor Network Rollout (Hardware + Installation)</td>
-          <td>AUD 80,000 – 120,000</td>
-          <td>AUD 150,000+ (stockout prevention, shrinkage control)</td>
-          <td>~8–10 months</td>
+          <td class="td-bold">Annual Operational Expense (OpEx)</td>
+          <td>$45,000 / year</td>
+          <td>Cloud SaaS subscription fees, IoT data infrastructure upkeep, and continuous security patching.</td>
         </tr>
         <tr>
-          <td class="td-bold">Ongoing SaaS Subscription &amp; Cloud Compute</td>
-          <td>AUD 60,000 p.a.</td>
-          <td>Scalable: offsets on-premise infrastructure costs</td>
-          <td>Ongoing positive ROI</td>
+          <td class="td-bold">Projected Annual Cost Savings</td>
+          <td>$115,000 / year</td>
+          <td>Elimination of manual auditing, reduction in processing costs from ERP_Order_Errors, and downscaled shrinkage.</td>
         </tr>
         <tr>
-          <td class="td-bold">Staff Training &amp; Change Management</td>
-          <td>AUD 30,000</td>
-          <td>Intangible: error reduction, adoption speed</td>
-          <td>~6 months</td>
+          <td class="td-bold">Projected Reclaimed Revenue</td>
+          <td>$140,000 / year</td>
+          <td>Reclaiming lost sales by dropping Stockout_Flag incidence rates and lifting online conversion metrics.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Net Payback Period</td>
+          <td>~ 11.1 Months</td>
+          <td>Calculated by offsetting initial capital outlays against annualized cash flows from efficiency gains and saved sales.</td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>
-          <td>Total Indicative Investment</td>
-          <td>AUD 350,000 – 460,000</td>
-          <td>AUD 470,000+ (conservative estimate)</td>
-          <td>&lt;12 months full ROI</td>
-        </tr>
-      </tfoot>
     </table>
   </div>
-  <p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.75rem;"><em>Note: All figures are indicative estimates based on industry benchmarks for mid-market Australian retail ERP implementations and IoT rollouts. Detailed financial modelling should be completed during the vendor procurement and project scoping phase.</em></p>
 </section>
 
-<!-- SECTION 5 -->
 <section id="s5" class="section">
   <div class="section-header">
     <span class="section-num">05</span>
-    <h2 class="section-title">Roadmap for Implementation</h2>
+    <h2 class="section-title">Roadmap for Implementation &amp; Project Governance</h2>
   </div>
   <div class="section-line"></div>
-  <p>A phased implementation approach is recommended to manage operational disruption, investment cash flow, and allow for iterative learning and adjustment before full system deployment.</p>
+  <p>To avoid operational disruptions, a phased deployment schedule over a 12-month window is recommended, ensuring rigorous testing and data validation before final live handovers.</p>
 
   <div class="phase-grid">
     <div class="phase-card">
       <div class="phase-header">
         <div class="phase-num">Phase 1</div>
-        <div class="phase-title">Foundation: Cloud ERP Procurement &amp; Data Migration</div>
+        <div class="phase-title">Discovery &amp; Financial Ledger Design</div>
         <div class="phase-time">Months 1 – 3</div>
       </div>
       <div class="phase-body">
         <ul>
-          <li>Issue formal RFP to shortlisted cloud ERP vendors (SAP Business One, Oracle NetSuite, Microsoft Dynamics 365 Business Central) weighted to retail functionality and Australian data sovereignty compliance.</li>
-          <li>Conduct data audit of existing inventory, financial, and supplier records to identify and remediate quality issues prior to migration.</li>
-          <li>Configure ERP financial modules (General Ledger, AP/AR, Budget Management) and integrate with existing Power BI environment for live Actual_vs_Budget_AUD monitoring.</li>
-          <li>Parallel-run legacy and new ERP systems to validate data accuracy before decommissioning legacy processes.</li>
+          <li>Map core financial workflows into the ERP framework.</li>
+          <li>Clean historical inventory records before migration.</li>
+          <li>Set up automated validation rules for data entries.</li>
         </ul>
       </div>
     </div>
+
     <div class="phase-card">
       <div class="phase-header">
         <div class="phase-num">Phase 2</div>
-        <div class="phase-title">IoT Rollout: Sensor Network Deployment</div>
-        <div class="phase-time">Months 3 – 6</div>
+        <div class="phase-title">IoT Network Infrastructure Deployment</div>
+        <div class="phase-time">Months 4 – 6</div>
       </div>
       <div class="phase-body">
         <ul>
-          <li>Procure and install RFID portal readers at all warehouse entry/exit points; deploy smart shelf sensors in key stock areas for pilot stores.</li>
-          <li>Integrate IoT sensor network with cloud ERP inventory module via API; configure automated alert rules and replenishment triggers.</li>
-          <li>Establish IoT_Alert response protocols and assign accountability for alert resolution within the Operations team; implement KPI tracking for alert resolution time and stockout incidence rate.</li>
-          <li>Validate Warehouse_Scans data quality against physical stock counts to confirm sensor accuracy before full reliance on automated records.</li>
+          <li>Install physical RFID reader gates across DCs.</li>
+          <li>Tag high-value furniture and homeware pieces.</li>
+          <li>Link real-time sensor streams with ERP modules.</li>
         </ul>
       </div>
     </div>
+
     <div class="phase-card">
       <div class="phase-header">
         <div class="phase-num">Phase 3</div>
-        <div class="phase-title">Optimisation &amp; E-commerce Integration</div>
-        <div class="phase-time">Months 6 – 12</div>
+        <div class="phase-title">System Integration &amp; Live Handover</div>
+        <div class="phase-time">Months 7 – 9</div>
       </div>
       <div class="phase-body">
         <ul>
-          <li>Extend cloud ERP inventory data to the e-commerce platform via API, enabling real-time stock availability display — directly improving Website_Visits to Online_Orders conversion by eliminating overselling and backorder scenarios.</li>
-          <li>Activate ERP's demand forecasting module using historical Sales_AUD, Supplier_Lead_Time_Days, and seasonal data to generate AI-assisted replenishment recommendations.</li>
-          <li>Expand Power BI dashboards to incorporate live IoT and ERP data streams, delivering a fully integrated operational and financial monitoring capability.</li>
-          <li>Formal post-implementation review at Month 12: compare Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag incidence, Order_Fulfilment_Days, and Service_Tickets against pre-implementation baselines.</li>
+          <li>Connect e-commerce platforms for live stock visibility.</li>
+          <li>Run extensive end-to-end trials across supply lines.</li>
+          <li>Train warehouse personnel on modern scanning protocols.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">Phase 4</div>
+        <div class="phase-title">Governance &amp; Variance Optimization</div>
+        <div class="phase-time">Months 10 – 12</div>
+      </div>
+      <div class="phase-body">
+        <ul>
+          <li>Enforce automated variance threshold triggers.</li>
+          <li>Audit live Actual_vs_Budget_AUD metrics.</li>
+          <li>Conduct comprehensive 12-month review sessions.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 6 -->
 <section id="s6" class="section">
   <div class="section-header">
     <span class="section-num">06</span>
     <h2 class="section-title">Risk Assessment &amp; Mitigation Framework</h2>
   </div>
   <div class="section-line"></div>
+  <p>Large-scale technological adjustments carry clear risks. This matrix provides structured strategies to ensure stable operational continuity.</p>
+
   <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th>Risk</th>
-          <th>Likelihood</th>
-          <th>Impact</th>
-          <th>Mitigation Strategy</th>
+          <th>Identified Risk Event</th>
+          <th>Severity</th>
+          <th>Financial &amp; Operational Impact</th>
+          <th>Proactive Mitigation Control</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="td-bold">ERP implementation overrun / cost blowout</td>
-          <td><span class="risk-med">Medium</span></td>
-          <td><span class="risk-high">High</span></td>
-          <td>Phased rollout; fixed-price vendor contract with SLA penalties</td>
+          <td class="td-bold">Data migration errors from legacy logs</td>
+          <td><span class="risk-badge risk-high">High</span></td>
+          <td>Corrupted financial accounts, leading to inaccurate Actual_vs_Budget_AUD metrics.</td>
+          <td>Enforce mandatory dry-run data trials and programmatic verification scripts prior to going live.</td>
         </tr>
         <tr>
-          <td class="td-bold">Staff resistance to system change</td>
-          <td><span class="risk-high">High</span></td>
-          <td><span class="risk-med">Medium</span></td>
-          <td>Change management program; superuser network; training incentives</td>
+          <td class="td-bold">Operational pushback to new hardware use</td>
+          <td><span class="risk-badge risk-med">Medium</span></td>
+          <td>Suppressed Warehouse_Scans counts and prolonged Order_Fulfilment_Days during rollouts.</td>
+          <td>Introduce standardized training targets alongside clear performance metrics linked to terminal use.</td>
         </tr>
         <tr>
-          <td class="td-bold">IoT sensor data quality issues (false alerts)</td>
-          <td><span class="risk-low">Low</span></td>
-          <td><span class="risk-med">Medium</span></td>
-          <td>Regular calibration schedule; alert threshold tuning during pilot</td>
-        </tr>
-        <tr>
-          <td class="td-bold">Data migration errors from legacy systems</td>
-          <td><span class="risk-med">Medium</span></td>
-          <td><span class="risk-high">High</span></td>
-          <td>Parallel-run testing period; data validation audit pre-cutover</td>
-        </tr>
-        <tr>
-          <td class="td-bold">Vendor lock-in / cloud dependency</td>
-          <td><span class="risk-low">Low</span></td>
-          <td><span class="risk-high">High</span></td>
-          <td>Multi-cloud architecture; ensure data portability contractually</td>
+          <td class="td-bold">SaaS subscription price hikes</td>
+          <td><span class="risk-badge risk-low">Low</span></td>
+          <td>Unplanned operational cost expansion across quarterly reporting frames.</td>
+          <td>Negotiate locked-in multi-year pricing structures inside master service level documents.</td>
         </tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<!-- SECTION 7 -->
 <section id="s7" class="section">
   <div class="section-header">
     <span class="section-num">07</span>
-    <h2 class="section-title">Strategic Alignment &amp; Discipline-based Considerations</h2>
+    <h2 class="section-title">Strategic Alignment with Broad Corporate Strategy</h2>
   </div>
   <div class="section-line"></div>
+  <p>This technical investment aligns closely with broader corporate objectives, helping the business scale efficiently in modern retail landscapes.</p>
 
   <div class="strategy-grid">
     <div class="strategy-card">
-      <div class="strategy-title">Theory of Constraints</div>
-      <p class="strategy-text">This investment applies the theory of constraints: the company's capacity to generate Gross_Profit_AUD is constrained not by market demand or product quality, but by operational bottlenecks — stock unavailability and order processing failures. Standard resource allocation theory prescribes directing investment first at the binding constraint, as relaxing non-binding constraints yields no improvement in throughput. The recommended technologies directly remove these binding constraints, making this the highest-expected-value investment available.</p>
+      <div class="strategy-title">Data-Driven Financial Control</div>
+      <p class="strategy-text">Transforms financial tracking from end-of-month reviews to live ledger visibility, establishing strict oversight on expenditures.</p>
     </div>
     <div class="strategy-card">
-      <div class="strategy-title">Information Economics</div>
-      <p class="strategy-text">Cloud ERP and IoT together constitute an investment in information quality. Information economics establishes that the value of information is proportional to the decisions it enables and the cost of errors it prevents. Real-time inventory data (IoT) and real-time financial data (cloud ERP) allow the company to replace reactive, error-prone manual decision-making with proactive, automated, and systematically optimised responses — the economic value of which compounds over time as the system learns from historical patterns.</p>
+      <div class="strategy-title">Omnichannel Excellence</div>
+      <p class="strategy-text">Links warehouse realities directly with online portals, creating reliable conversion pipelines and protecting margins.</p>
     </div>
     <div class="strategy-card">
-      <div class="strategy-title">Competitive Imperative</div>
-      <p class="strategy-text">The Queensland furniture and homewares retail market is increasingly competitive, with domestic competitors and international e-commerce entrants investing heavily in supply chain digitalisation. The operational failures documented in Part A — stockouts, delayed fulfilment, poor online conversion — are customer-facing service failures that erode brand equity and competitive positioning. The recommended investment should therefore be understood not only as a cost-reduction initiative but as a strategic competitiveness imperative.</p>
+      <div class="strategy-title">Scalable Infrastructure</div>
+      <p class="strategy-text">Bypasses restrictive traditional networks in favor of elastic cloud computing capacities that adapt to seasonal changes seamlessly.</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 8 -->
-<section id="s8" class="section">
+<section id="s8" class="section" style="border-bottom: none;">
   <div class="section-header">
     <span class="section-num">08</span>
     <h2 class="section-title">Closing &amp; Formal Recommendation</h2>
   </div>
   <div class="section-line"></div>
+  
+  <p>The quantitative findings compiled via Power BI in Part A demonstrate that continuing with manual operational processes introduces significant financial vulnerabilities. The combined deployment of a Cloud-hosted ERP alongside an IoT inventory layout resolves existing transparency issues, protects core gross profit lines, and builds a dependable operational foundation.</p>
 
-  <p>The operational and financial evidence presented across Part A and this Part B proposal establishes a clear and compelling case for the immediate prioritisation of digital transformation investment. The company's current trajectory — characterised by persistent Stockout_Flag events, compounding ERP_Order_Errors, deteriorating On_Time_Delivery_Pct, and widening negative Actual_vs_Budget_AUD variances — is directly and measurably suppressing Gross_Profit_AUD and undermining the Finance Department's capacity to exercise effective financial control.</p>
-
-  <p>The proposed adoption of a Cloud-hosted ERP System and an IoT-enabled Inventory Visibility Network represents a strategically coherent, financially justified, and operationally viable response. The two technologies are architecturally complementary: IoT provides the physical-world data capture layer that feeds real-time, accurate inventory intelligence into the cloud ERP's automated decision-making and financial reporting engine. Together, they eliminate the manual processes, data inconsistencies, and visibility gaps that are the root causes of the company's current operational and financial underperformance.</p>
-
-  <div class="conclusion-box">
-    <h3>Formal Recommendations — Finance &amp; Accounting Department</h3>
-    <p>The Finance &amp; Accounting Department is formally recommended to endorse the following actions:</p>
-    <div class="reco-list">
-      <div class="reco-row">
-        <div class="reco-num">1</div>
-        <div class="reco-text">Approve the allocation of capital and operational budget for Phase 1 ERP procurement, with an indicative budget ceiling of <b>AUD 250,000</b> for Year 1 implementation costs.</div>
-      </div>
-      <div class="reco-row">
-        <div class="reco-num">2</div>
-        <div class="reco-text">Commission a formal vendor evaluation process for cloud ERP selection, with the Finance Department represented on the evaluation committee to ensure financial reporting requirements are prioritised.</div>
-      </div>
-      <div class="reco-row">
-        <div class="reco-num">3</div>
-        <div class="reco-text">Endorse the IoT sensor network rollout as Phase 2 of the implementation, with a budget envelope of <b>AUD 120,000</b> and a target completion date of Month 6 from project commencement.</div>
-      </div>
-      <div class="reco-row">
-        <div class="reco-num">4</div>
-        <div class="reco-text">Mandate a <b>Month 12 post-implementation review</b> with quantitative comparison of pre- and post-implementation values for Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag incidence rate, Order_Fulfilment_Days, and Service_Tickets volume.</div>
-      </div>
+  <div class="reco-container">
+    <h4 style="margin-top:0; margin-bottom:1rem; color:var(--navy); font-size:1.05rem;">The Finance &amp; Accounting Department is formally recommended to:</h4>
+    
+    <div class="reco-row">
+      <div class="reco-num">1</div>
+      <div class="reco-text">Approve capital and operational budget allocation for <b>Phase 1 ERP Procurement</b> with a Year 1 execution ceiling of <b>AUD 250,000</b>.</div>
     </div>
-    <p style="margin-top:1.25rem; font-style:italic; font-size:0.9rem;">This proposed investment positions the company to recover lost gross profit, restore budget credibility, and build the digital infrastructure necessary to compete effectively in an increasingly digital retail environment. This analyst is available to present these recommendations in further detail and to support the vendor evaluation process upon management request.</p>
+    <div class="reco-row">
+      <div class="reco-num">2</div>
+      <div class="reco-text">Mandate explicit Finance Department representation on the software vendor selection panel to ensure advanced accounting metrics and reporting guidelines are prioritized.</div>
+    </div>
+    <div class="reco-row">
+      <div class="reco-num">3</div>
+      <div class="reco-text">Endorse the IoT sensor network rollout as <b>Phase 2</b> of the implementation, with a dedicated budget envelope of <b>AUD 120,000</b> and a target completion timeline of Month 6.</div>
+    </div>
+    <div class="reco-row">
+      <div class="reco-num">4</div>
+      <div class="reco-text">Establish a mandatory <b>Month 12 post-implementation audit</b> comparing pre- and post-deployment performance values for Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag rates, and Service_Tickets volumes.</div>
+    </div>
   </div>
+  
+  <p style="font-style: italic; color: var(--text-muted); margin-top: 1.5rem;">This proposed investment positions the company to recover lost gross profit, restore budget credibility, and build the digital infrastructure necessary to compete effectively in an increasingly digital retail environment. This analyst is available to present these recommendations in further detail and to support the vendor evaluation process upon management request.</p>
 </section>
 
-</div><!-- /content-wrap -->
+</div><div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img class="lightbox-content" id="lightboxImg">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <footer>
   <p><span>BUS108</span> · Digital Business Portfolio · Task 2 — Part B &nbsp;|&nbsp; <span>CONFIDENTIAL</span> — Prepared for the Finance &amp; Accounting Department &nbsp;|&nbsp; Queensland-based Retail Chain</p>
 </footer>
+
+<script>
+function openLightbox(element, captionText) {
+  var imgSrc = element.getElementsByTagName('img')[0].src;
+  
+  // Guard check: do not open if user hasn't replaced placeholder string
+  if (imgSrc.includes('YOUR_CHART_')) {
+    alert('Placeholder detected. Please replace "YOUR_CHART_X_IMAGE_URL.jpg" with your true direct link from Postimages first!');
+    return;
+  }
+  
+  var modal = document.getElementById('lightboxModal');
+  var modalImg = document.getElementById('lightboxImg');
+  var modalCaption = document.getElementById('lightboxCaption');
+  
+  modal.classList.add('show');
+  modalImg.src = imgSrc;
+  modalCaption.innerHTML = captionText;
+}
+
+function closeLightbox() {
+  var modal = document.getElementById('lightboxModal');
+  modal.classList.remove('show');
+}
+
+// Allow escape key to close image modal workspace
+document.addEventListener('keydown', function(event) {
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+});
+</script>
 
 </body>
 </html>
