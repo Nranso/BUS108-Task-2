@@ -607,6 +607,10 @@
     line-height: 1;
     margin-top: 2px;
   }
+  .reco-list li b {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
 
   /* RISK TABLE — colour-coded */
   .risk-high { color: #C0392B; font-weight: 600; }
@@ -625,6 +629,92 @@
   }
   footer span { color: var(--gold); }
 
+  /* PART A CHARTS */
+  .parta-band {
+    background: var(--navy-mid);
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(201,168,76,0.25);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+  .parta-inner { max-width: 900px; margin: 0 auto; }
+  .parta-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .parta-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .parta-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+  }
+  .parta-intro {
+    font-size: 0.9rem;
+    color: var(--slate);
+    margin-bottom: 2rem;
+    max-width: 720px;
+  }
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .chart-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .chart-card-img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    object-position: top;
+    background: var(--navy);
+  }
+  .chart-card-footer {
+    padding: 0.875rem 1rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .chart-card-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+  .chart-card-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .chart-card-desc {
+    font-size: 0.78rem;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+  .parta-insight {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+  }
+  .parta-insight strong { color: var(--gold-light); }
+
   /* SMOOTH SCROLL */
   html { scroll-behavior: smooth; }
 
@@ -642,6 +732,7 @@
   <div class="nav-brand">BUS108 · Task 2 · Part B</div>
   <ul class="nav-links">
     <li><a href="#exec">Summary</a></li>
+    <li><a href="#parta">Part A Charts</a></li>
     <li><a href="#s1">Problem</a></li>
     <li><a href="#s2">ERP</a></li>
     <li><a href="#s3">IoT</a></li>
@@ -695,6 +786,55 @@
       <p>This report constitutes Part B of the Digital Business Portfolio and presents a formally structured, evidence-based technology recommendation building directly on quantitative Power BI findings from Part A — which identified material gross profit erosion, adverse budget variances, and systemic operational failures across inventory, order fulfilment, and warehouse management.</p>
       <p>This proposal advocates the strategic implementation of two complementary digital technologies: a <strong>Cloud-hosted Enterprise Resource Planning (ERP) System</strong> and an <strong>IoT-enabled Inventory Visibility Network</strong>. Together, they form an integrated digital infrastructure layer that targets the company's most financially damaging operational deficiencies while establishing the data architecture required for future e-commerce integration and predictive analytics.</p>
       <p>Current operational failures demonstrably suppress Gross_Profit_AUD, inflate Service_Tickets, degrade On_Time_Delivery_Pct, and generate invisible cost leakage. The proposed transformation is projected to deliver measurable ROI within 12 months of full deployment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PART A CHARTS SECTION -->
+<section id="parta" class="parta-band">
+  <div class="parta-inner">
+    <div class="parta-heading">
+      <span class="parta-eyebrow">Part A — Power BI</span>
+      <h2 class="parta-title">Dashboard Visualisations</h2>
+    </div>
+    <p class="parta-intro">The three Power BI charts below were produced in Part A to identify the bottom-line business issues driving this proposal. Each visualisation exposes a distinct financial pressure point — budget leakage, profit margin erosion, and weak e-commerce contribution — that directly motivated the technology recommendations in Part B.</p>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <img class="chart-card-img"
+          src="https://i.postimg.cc/3wxXr0Q9/Screenshot-2026-05-06-220435-(1).png"
+          alt="Clustered Bar Chart — Actual vs Budget Variance by location"
+          onerror="this.style.background='#1A2E45';this.style.display='flex';this.style.alignItems='center';this.style.justifyContent='center';">
+        <div class="chart-card-footer">
+          <div class="chart-card-label">Visualisation 1 · Clustered Bar Chart</div>
+          <div class="chart-card-title">Actual vs. Budget Variance (AUD)</div>
+          <div class="chart-card-desc">Tracks budget leakage across store and warehouse locations, surfacing locations driving the largest negative Actual_vs_Budget_AUD deviations.</div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <img class="chart-card-img"
+          src="https://i.postimg.cc/wB4h1x9h/Screenshot-2026-05-06-220444-(1).png"
+          alt="Line and Clustered Column Chart — Sales vs Gross Profit over time"
+          onerror="this.style.background='#1A2E45';">
+        <div class="chart-card-footer">
+          <div class="chart-card-label">Visualisation 2 · Line &amp; Column Chart</div>
+          <div class="chart-card-title">Sales vs. Gross Profit Over Time</div>
+          <div class="chart-card-desc">Identifies profit margin erosion caused by manual processing delays and extended Supplier_Lead_Time_Days widening the gap between Sales_AUD and Gross_Profit_AUD.</div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <img class="chart-card-img"
+          src="https://i.postimg.cc/FKCjYFh0/Screenshot-2026-05-06-220451-(1).png"
+          alt="Donut Chart — Gross Profit by Sales Channel"
+          onerror="this.style.background='#1A2E45';">
+        <div class="chart-card-footer">
+          <div class="chart-card-label">Visualisation 3 · Donut Chart</div>
+          <div class="chart-card-title">Gross Profit by Sales Channel</div>
+          <div class="chart-card-desc">Breaks down Gross_Profit_AUD between Online and In-Store channels, revealing the disproportionately weak e-commerce margin contribution relative to costs.</div>
+        </div>
+      </div>
+    </div>
+    <div class="parta-insight">
+      <strong>Cross-filter insight:</strong> Clicking the <em>Online</em> slice in the Donut Chart instantly cross-filters the Budget Variance and Sales vs. Profit charts to show only online channel data — exposing that digital fulfilment centres are driving the largest negative budget deviations due to stockout-driven order failures. This interactivity is demonstrated in the accompanying screen recording.
     </div>
   </div>
 </section>
@@ -1151,10 +1291,10 @@
     <h3>Formal Recommendations — Finance &amp; Accounting Department</h3>
     <p>The Finance &amp; Accounting Department is formally recommended to endorse the following actions:</p>
     <ol class="reco-list">
-      <li>Approve the allocation of capital and operational budget for Phase 1 ERP procurement, with an indicative budget ceiling of <strong>AUD 250,000</strong> for Year 1 implementation costs.</li>
+      <li>Approve the allocation of capital and operational budget for Phase 1 ERP procurement, with an indicative budget ceiling of <b>AUD 250,000</b> for Year 1 implementation costs.</li>
       <li>Commission a formal vendor evaluation process for cloud ERP selection, with the Finance Department represented on the evaluation committee to ensure financial reporting requirements are prioritised.</li>
-      <li>Endorse the IoT sensor network rollout as Phase 2 of the implementation, with a budget envelope of <strong>AUD 120,000</strong> and a target completion date of Month 6 from project commencement.</li>
-      <li>Mandate a <strong>Month 12 post-implementation review</strong> with quantitative comparison of pre- and post-implementation values for Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag incidence rate, Order_Fulfilment_Days, and Service_Tickets volume.</li>
+      <li>Endorse the IoT sensor network rollout as Phase 2 of the implementation, with a budget envelope of <b>AUD 120,000</b> and a target completion date of Month 6 from project commencement.</li>
+      <li>Mandate a <b>Month 12 post-implementation review</b> with quantitative comparison of pre- and post-implementation values for Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag incidence rate, Order_Fulfilment_Days, and Service_Tickets volume.</li>
     </ol>
     <p style="margin-top:1.25rem; font-style:italic; font-size:0.9rem;">This proposed investment positions the company to recover lost gross profit, restore budget credibility, and build the digital infrastructure necessary to compete effectively in an increasingly digital retail environment. This analyst is available to present these recommendations in further detail and to support the vendor evaluation process upon management request.</p>
   </div>
