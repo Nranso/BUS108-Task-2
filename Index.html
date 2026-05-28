@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUS108 | Digital Business Portfolio — Part B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E45;
+    --navy-light: #243B55;
+    --steel: #2C4A6E;
+    --accent: #3E7CB1;
+    --accent-light: #5A9FD4;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --slate: #8BA0B4;
+    --ice: #D6E8F5;
+    --fog: #F0F5FA;
+    --white: #FFFFFF;
+    --text-body: #2A3A4A;
+    --text-muted: #5A7080;
+    --border: rgba(44,74,110,0.15);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text-body);
+    background: var(--fog);
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    margin-right: auto;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    overflow-x: auto;
+  }
+  .nav-links a {
+    display: block;
+    padding: 1rem 1rem;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+  }
+  .nav-links a:hover { color: var(--white); border-bottom-color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 40%;
+    background: linear-gradient(135deg, transparent 0%, rgba(62,124,177,0.12) 100%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 60%);
+  }
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    max-width: 780px;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--slate);
+    max-width: 620px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 760px;
+  }
+  .meta-item {
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.03);
+  }
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+  }
+
+  /* EXEC SUMMARY BAND */
+  .exec-band {
+    background: var(--steel);
+    color: var(--white);
+    padding: 3rem 2rem;
+  }
+  .exec-band-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .exec-label {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    line-height: 1.2;
+  }
+  .exec-text p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+  .exec-text p:last-child { margin-bottom: 0; }
+  .exec-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.18);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin: 2px 3px 2px 0;
+  }
+  .exec-tags { margin-bottom: 1rem; }
+
+  /* MAIN CONTENT */
+  .content-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 3.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    min-width: 24px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .section-line {
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 80%);
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy-mid);
+    margin: 1.75rem 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+  }
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--steel);
+    margin: 1.25rem 0 0.5rem;
+  }
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: var(--text-body);
+  }
+
+  /* FAILURE CHAIN */
+  .chain-item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 0.75rem;
+    transition: border-left-color 0.2s;
+  }
+  .chain-item:hover { border-left-color: var(--gold); }
+  .chain-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--ice);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .chain-content {}
+  .chain-arrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 3px;
+    letter-spacing: 0.05em;
+  }
+  .chain-text {
+    font-size: 0.9rem;
+    color: var(--text-body);
+    margin: 0;
+  }
+  .var-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--ice);
+    color: var(--steel);
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid rgba(44,74,110,0.15);
+  }
+
+  /* TABLES */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(13,27,42,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  thead tr {
+    background: var(--navy);
+    color: var(--white);
+  }
+  thead th {
+    padding: 0.875rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  tbody tr:nth-child(even) { background: var(--fog); }
+  tbody tr { background: var(--white); transition: background 0.15s; }
+  tbody tr:hover { background: var(--ice); }
+  tbody td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  tfoot tr { background: var(--navy-mid); }
+  tfoot td {
+    padding: 0.75rem 1rem;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .td-bold { font-weight: 600; color: var(--navy); }
+
+  /* TECH CARDS */
+  .tech-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .tech-card-header {
+    background: var(--navy);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .tech-badge {
+    background: rgba(201,168,76,0.2);
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold-light);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .tech-card-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--white);
+  }
+  .tech-card-body { padding: 1.75rem; }
+
+  /* FEATURE GRID */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+  .feature-item {
+    background: var(--fog);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .feature-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .feature-text {
+    font-size: 0.88rem;
+    color: var(--text-body);
+    margin: 0;
+  }
+
+  /* BULLET LIST */
+  ul.report-list {
+    list-style: none;
+    margin: 0.75rem 0 1rem;
+    padding: 0;
+  }
+  ul.report-list li {
+    padding: 0.45rem 0 0.45rem 1.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--text-body);
+    border-bottom: 1px solid rgba(44,74,110,0.06);
+  }
+  ul.report-list li:last-child { border-bottom: none; }
+  ul.report-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  /* PHASES */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .phase-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .phase-header {
+    padding: 0.875rem 1.25rem;
+    background: var(--steel);
+    color: var(--white);
+  }
+  .phase-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+  }
+  .phase-title { font-size: 0.9rem; font-weight: 600; }
+  .phase-time { font-size: 0.78rem; color: var(--ice); margin-top: 2px; }
+  .phase-body { padding: 1rem 1.25rem; }
+  .phase-body li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+    color: var(--text-body);
+  }
+  .phase-body li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* STRATEGIC CARDS */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .strategy-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 0 0 10px 10px;
+    padding: 1.25rem;
+  }
+  .strategy-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .strategy-text { font-size: 0.88rem; margin: 0; }
+
+  /* ARCH FLOW */
+  .arch-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  .arch-node {
+    flex-shrink: 0;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+    min-width: 110px;
+  }
+  .arch-node-label {
+    font-size: 0.7rem;
+    color: var(--slate);
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .arch-node-title { font-weight: 600; font-size: 0.82rem; }
+  .arch-arrow {
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+  }
+
+  /* CONCLUSION */
+  .conclusion-box {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .conclusion-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gold);
+  }
+  .conclusion-box h3 {
+    color: var(--gold-light);
+    text-transform: none;
+    font-size: 1.2rem;
+    letter-spacing: 0;
+    font-family: var(--font-display);
+    margin-top: 0;
+  }
+  .conclusion-box p { color: rgba(255,255,255,0.8); }
+  .reco-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    counter-reset: reco;
+  }
+  .reco-list li {
+    counter-increment: reco;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.82);
+  }
+  .reco-list li:last-child { margin-bottom: 0; border-bottom: none; }
+  .reco-list li::before {
+    content: counter(reco);
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  /* RISK TABLE — colour-coded */
+  .risk-high { color: #C0392B; font-weight: 600; }
+  .risk-med { color: #D68910; font-weight: 600; }
+  .risk-low { color: #1E8449; font-weight: 600; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: var(--slate);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    border-top: 2px solid var(--gold);
+  }
+  footer span { color: var(--gold); }
+
+  /* SMOOTH SCROLL */
+  html { scroll-behavior: smooth; }
+
+  @media (max-width: 640px) {
+    .exec-band-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .hero h1 { font-size: 2rem; }
+    nav { padding: 0 1rem; }
+    .content-wrap { padding: 0 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">BUS108 · Task 2 · Part B</div>
+  <ul class="nav-links">
+    <li><a href="#exec">Summary</a></li>
+    <li><a href="#s1">Problem</a></li>
+    <li><a href="#s2">ERP</a></li>
+    <li><a href="#s3">IoT</a></li>
+    <li><a href="#s4">Cost-Benefit</a></li>
+    <li><a href="#s5">Roadmap</a></li>
+    <li><a href="#s6">Risk</a></li>
+    <li><a href="#s7">Strategy</a></li>
+    <li><a href="#s8">Recommendation</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Digital Business Portfolio — Task 2</div>
+    <h1>Digital Transformation Proposal: Cloud ERP &amp; IoT Inventory Visibility</h1>
+    <p class="hero-subtitle">A formal strategic recommendation to the Finance &amp; Accounting Department on resolving operational failures through targeted digital investment.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-label">Prepared for</div>
+        <div class="meta-value">Finance &amp; Accounting Dept. Manager</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Prepared by</div>
+        <div class="meta-value">Business Analyst — Economics &amp; Finance</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Classification</div>
+        <div class="meta-value">Internal — Confidential</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Course</div>
+        <div class="meta-value">BUS108 — Business Information Systems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXEC SUMMARY BAND -->
+<section id="exec" class="exec-band">
+  <div class="exec-band-inner">
+    <div class="exec-label">Executive<br>Summary</div>
+    <div class="exec-text">
+      <div class="exec-tags">
+        <span class="exec-tag">Stockout_Flag</span>
+        <span class="exec-tag">ERP_Order_Errors</span>
+        <span class="exec-tag">Gross_Profit_AUD</span>
+        <span class="exec-tag">Actual_vs_Budget_AUD</span>
+        <span class="exec-tag">Order_Fulfilment_Days</span>
+      </div>
+      <p>This report constitutes Part B of the Digital Business Portfolio and presents a formally structured, evidence-based technology recommendation building directly on quantitative Power BI findings from Part A — which identified material gross profit erosion, adverse budget variances, and systemic operational failures across inventory, order fulfilment, and warehouse management.</p>
+      <p>This proposal advocates the strategic implementation of two complementary digital technologies: a <strong>Cloud-hosted Enterprise Resource Planning (ERP) System</strong> and an <strong>IoT-enabled Inventory Visibility Network</strong>. Together, they form an integrated digital infrastructure layer that targets the company's most financially damaging operational deficiencies while establishing the data architecture required for future e-commerce integration and predictive analytics.</p>
+      <p>Current operational failures demonstrably suppress Gross_Profit_AUD, inflate Service_Tickets, degrade On_Time_Delivery_Pct, and generate invisible cost leakage. The proposed transformation is projected to deliver measurable ROI within 12 months of full deployment.</p>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+<!-- SECTION 1 -->
+<section id="s1" class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Strategic Problem Statement: Connecting Operational Failures to Financial Outcomes</h2>
+  </div>
+  <div class="section-line"></div>
+
+  <p>A key purpose of this Part B analysis is to establish, with economic rigour, the causal chain between observable operational variables and their downstream financial consequences. The data attributes surfaced in Part A are not isolated metrics — they are symptomatic of deeply systemic process failures that compound across the organisation's supply chain, sales channels, and financial reporting.</p>
+
+  <h3>1.1 The Operational–Financial Failure Chain</h3>
+
+  <div class="chain-item">
+    <div class="chain-icon">📦</div>
+    <div class="chain-content">
+      <div class="chain-arrow"><span class="var-tag">Stockout_Flag = 1</span> → Revenue Loss</div>
+      <p class="chain-text">When stock is unavailable physically or online, sales transactions cannot be completed. This directly suppresses <span class="var-tag">Sales_AUD</span> and, in turn, <span class="var-tag">Gross_Profit_AUD</span>. The Part A Donut Chart revealed disproportionately weak online channel gross profit contributions — consistent with stockout-driven cart abandonment, a costly failure given that online channels typically carry lower fixed overheads and should yield higher margin contributions.</p>
+    </div>
+  </div>
+
+  <div class="chain-item">
+    <div class="chain-icon">⚠️</div>
+    <div class="chain-content">
+      <div class="chain-arrow">Manual Inventory Updates → <span class="var-tag">ERP_Order_Errors</span> → Reconciliation Costs</div>
+      <p class="chain-text">Systematic data inconsistency — caused by manual updates across multiple stores and warehouses — cascades into ERP_Order_Errors, which trigger manual correction cycles, delay order processing, inflate <span class="var-tag">Order_Fulfilment_Days</span>, and consume accounting staff time, inflating operational costs without generating corresponding revenue.</p>
+    </div>
+  </div>
+
+  <div class="chain-item">
+    <div class="chain-icon">🚚</div>
+    <div class="chain-content">
+      <div class="chain-arrow">High <span class="var-tag">Order_Fulfilment_Days</span> → Low <span class="var-tag">On_Time_Delivery_Pct</span> → Service Ticket Escalation</div>
+      <p class="chain-text">Extended fulfilment timelines — driven by <span class="var-tag">Supplier_Lead_Time_Days</span> and inadequate inventory visibility — are the primary driver of elevated <span class="var-tag">Service_Tickets</span>. Each ticket represents both direct cost (staff labour, refunds) and indirect cost (reputational damage, customer lifetime value erosion).</p>
+    </div>
+  </div>
+
+  <div class="chain-item">
+    <div class="chain-icon">📡</div>
+    <div class="chain-content">
+      <div class="chain-arrow">Unresolved <span class="var-tag">IoT_Alerts</span> &amp; Low <span class="var-tag">Warehouse_Scans</span> → Inventory Shrinkage</div>
+      <p class="chain-text">Insufficient scanning activity and unacted-upon sensor alerts create blind spots in stock movement visibility, resulting in phantom inventory — stock recorded in the system but physically unavailable. This directly causes Stockout_Flag events even when nominal inventory levels appear sufficient, constituting a form of hidden financial loss not readily apparent in the Gross_Profit_AUD line.</p>
+    </div>
+  </div>
+
+  <div class="chain-item">
+    <div class="chain-icon">📊</div>
+    <div class="chain-content">
+      <div class="chain-arrow">Negative <span class="var-tag">Actual_vs_Budget_AUD</span> Variances → Budget Credibility &amp; Strategic Misalignment</div>
+      <p class="chain-text">Part A's Clustered Bar Chart identified significant recurring negative variances at specific store and warehouse locations. These variances undermine the reliability of budgetary controls and signal that current financial planning assumptions are systematically misaligned with operational reality — a primary concern for the Finance Department.</p>
+    </div>
+  </div>
+
+  <h3>1.2 Issue Priority Matrix</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Operational Issue (Data Variable)</th>
+          <th>Financial Impact</th>
+          <th>Recommended Technology</th>
+          <th>Expected Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">High Stockout_Flag &amp; low Inventory_On_Hand</td>
+          <td>Revenue loss, negative Actual_vs_Budget_AUD</td>
+          <td>IoT Visibility + Cloud ERP</td>
+          <td>Automated replenishment; eliminate stockouts</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Elevated ERP_Order_Errors &amp; manual reconciliation</td>
+          <td>Gross_Profit_AUD erosion, inflated processing costs</td>
+          <td>Enterprise ERP (Cloud-hosted)</td>
+          <td>Automated order-to-cash; zero-error reconciliation</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Extended Order_Fulfilment_Days &amp; Supplier_Lead_Time_Days</td>
+          <td>Poor On_Time_Delivery_Pct; rising Service_Tickets</td>
+          <td>Cloud ERP + IoT Warehouse Scanning</td>
+          <td>Real-time supplier integration; SLA compliance</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Inconsistent Warehouse_Scans &amp; unresolved IoT_Alerts</td>
+          <td>Invisible shrinkage, phantom inventory, wasted Cloud_Compute_Hours</td>
+          <td>IoT Sensor Network + Analytics</td>
+          <td>Full inventory traceability; proactive alert resolution</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Low online conversion (Website_Visits vs Online_Orders)</td>
+          <td>Weak e-commerce Gross_Profit_AUD contribution</td>
+          <td>Cloud ERP + E-commerce Integration</td>
+          <td>Unified omnichannel inventory; improved conversion</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="s2" class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Technology 1 — Cloud-hosted Enterprise Resource Planning (ERP) System</h2>
+  </div>
+  <div class="section-line"></div>
+
+  <div class="tech-card">
+    <div class="tech-card-header">
+      <span class="tech-badge">Technology 1</span>
+      <span class="tech-card-title">Cloud ERP — Conceptual Foundation</span>
+    </div>
+    <div class="tech-card-body">
+      <p>An Enterprise Resource Planning (ERP) system integrates the management of core business functions — financial accounting, procurement, inventory, order management, and human resources — within a single, unified data environment. Unlike legacy on-premise systems requiring manual synchronisation across business units, a <strong>cloud-hosted ERP operates on a Software-as-a-Service (SaaS) model</strong> delivered via third-party cloud infrastructure providers such as Microsoft Azure, Amazon Web Services, or Google Cloud Platform.</p>
+      <p>The architectural distinction is critical: cloud ERP systems leverage distributed computing infrastructure to provide <strong>real-time data synchronisation</strong> across all connected nodes — stores, warehouses, the e-commerce platform, and the finance department — simultaneously. Changes to inventory records, sales transactions, purchase orders, or financial entries propagate instantly across the entire system, eliminating the data latency and version inconsistency that characterises manual or siloed systems.</p>
+    </div>
+  </div>
+
+  <h3>2.1 Elimination of ERP_Order_Errors through Automated Order-to-Cash Processing</h3>
+  <p>The variable ERP_Order_Errors — representing mismatches and processing failures in the company's order cycles — is a direct consequence of manual data entry, disconnected systems, and absent automated validation rules. A modern cloud ERP system addresses this through:</p>
+  <ul class="report-list">
+    <li><strong>Automated order validation logic</strong> that cross-references Inventory_On_Hand, Supplier_Lead_Time_Days, and delivery expectations at point of order creation — preventing the downstream processing failures that generate ERP_Order_Errors.</li>
+    <li><strong>A single source of truth</strong> for financial and inventory data, ensuring that accounts receivable, accounts payable, and inventory ledgers are always synchronised — eliminating reconciliation gaps that currently consume Finance Department resources.</li>
+    <li><strong>Exception-based management workflows</strong> that automatically flag and route anomalous transactions for human review, rather than allowing errors to propagate undetected through the system.</li>
+  </ul>
+  <p>From a financial reporting perspective, the elimination of ERP_Order_Errors translates directly into improved accuracy of the Actual_vs_Budget_AUD variance metric, as actual financial performance will no longer be distorted by processing errors, duplicate entries, or incorrectly matched transactions.</p>
+
+  <h3>2.2 Real-time Financial Ledger Access and Budget Variance Management</h3>
+  <p>Cloud ERP platforms provide the Finance Department with live access to financial data across all locations, enabling <strong>dynamic variance monitoring</strong> rather than retrospective end-of-period analysis:</p>
+  <ul class="report-list">
+    <li>Managers can identify negative variance locations in real time, allowing corrective action — targeted inventory replenishment, promotional pricing, or cost containment measures — before the variance compounds across a full reporting period.</li>
+    <li>Automated budget alert thresholds notify relevant stakeholders when variance at any store or warehouse location exceeds a defined tolerance, institutionalising proactive financial governance.</li>
+    <li>Financial consolidation across all entities occurs automatically, reducing month-end close cycle duration and staff labour costs associated with manual data aggregation.</li>
+  </ul>
+
+  <h3>2.3 Supplier Integration and Reduction of Supplier_Lead_Time_Days</h3>
+  <p>Advanced cloud ERP platforms support Electronic Data Interchange (EDI) and API connectivity with supplier systems, enabling:</p>
+  <ul class="report-list">
+    <li>Automated purchase order generation when inventory levels fall below dynamically calculated reorder points — replacing the manual process that currently introduces delays and contributes to Stockout_Flag events.</li>
+    <li>Real-time supplier lead time updates feeding directly into the ERP's demand forecasting module, ensuring replenishment timelines are continuously recalibrated against actual Supplier_Lead_Time_Days.</li>
+    <li>Supplier performance tracking providing quantitative data to support contract renegotiation, penalty enforcement, or supplier diversification decisions — all with direct implications for Gross_Profit_AUD margin management.</li>
+  </ul>
+
+  <h3>2.4 Cloud Architecture: Financial Advantages</h3>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div class="feature-label">OpEx Model</div>
+      <p class="feature-text">Subscription-based SaaS fees convert large capital expenditure into predictable operational cost — improving cash flow and budget certainty.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-label">Elastic Scalability</div>
+      <p class="feature-text">Cloud_Compute_Hours scale dynamically. Seasonal peaks (e.g. Christmas trading) accommodated without permanent infrastructure investment.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-label">Automatic Upgrades</div>
+      <p class="feature-text">SaaS provider manages system updates, reducing IT maintenance burden and ensuring compliance standards without additional capital expenditure.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-label">Business Continuity</div>
+      <p class="feature-text">Built-in redundancy and automated data backup mitigate the financial risk of system outages that would directly impact Sales_AUD and Order_Fulfilment_Days.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section id="s3" class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Technology 2 — IoT-enabled Inventory Visibility Network</h2>
+  </div>
+  <div class="section-line"></div>
+
+  <div class="tech-card">
+    <div class="tech-card-header">
+      <span class="tech-badge">Technology 2</span>
+      <span class="tech-card-title">IoT Visibility — Conceptual Foundation</span>
+    </div>
+    <div class="tech-card-body">
+      <p>The Internet of Things (IoT) refers to the networked ecosystem of physical sensing and tracking devices — RFID readers, barcode scanners, weight sensors, temperature monitors, and smart shelf units — that capture real-world physical events and transmit them as structured digital data to a centralised platform in real time. In a retail and warehousing context, IoT-enabled inventory visibility transforms the traditionally manual, labour-intensive, and error-prone process of stock counting and tracking into an <strong>automated, continuous, and highly accurate data stream</strong>.</p>
+      <p>The foundational economic principle is the reduction of <strong>information asymmetry</strong> — the gap between what inventory records say and what physically exists on the warehouse floor. Eliminating this asymmetry is estimated by supply chain economists to reduce total inventory carrying costs by <strong>15–30%</strong> while improving service level rates (On_Time_Delivery_Pct) by comparable margins.</p>
+    </div>
+  </div>
+
+  <h3>3.1 Resolving Stockout_Flag and Automating Inventory Replenishment</h3>
+  <p>The Stockout_Flag variable is currently identified reactively, after sales have already been lost. IoT sensor networks transform this into a proactive capability:</p>
+  <ul class="report-list">
+    <li><strong>Smart shelf sensors and RFID readers</strong> continuously monitor stock at item or pallet level, generating automated IoT_Alerts when inventory falls below configurable reorder thresholds — before a stockout event occurs.</li>
+    <li>IoT_Alerts transmit directly to the cloud ERP system, which <strong>automatically generates a purchase order</strong> to the relevant supplier, ensuring replenishment is initiated without human intervention or delay.</li>
+    <li>Integration of IoT_Alerts with the ERP's demand forecasting module enables <strong>dynamic safety stock calculation</strong> accounting for real-time Supplier_Lead_Time_Days and seasonal patterns, replacing the static and frequently incorrect safety stock levels that currently cause Stockout_Flag events.</li>
+  </ul>
+
+  <h3>3.2 Increasing Warehouse_Scans and Achieving Full Inventory Traceability</h3>
+  <ul class="report-list">
+    <li><strong>Fixed RFID portal readers</strong> at all warehouse entry and exit points automatically record every stock movement — receipts, transfers, pick-and-pack, and despatch — without relying on manual scanning discipline, driving Warehouse_Scans to near-100% coverage.</li>
+    <li>Automated scanning eliminates the human error rate associated with manual barcode scanning — consistently identified by supply chain research as a primary source of inventory record inaccuracy in multi-location retail operations.</li>
+    <li>Real-time stock location data provides <strong>zone-level inventory visibility</strong> within each warehouse, reducing time spent locating stock for order fulfilment and directly compressing Order_Fulfilment_Days.</li>
+    <li>Complete scan trails provide the Finance Department with an <strong>auditable record</strong> of all stock movements, supporting shrinkage investigation, insurance claims, and financial control compliance.</li>
+  </ul>
+
+  <h3>3.3 Processing IoT_Alerts and Preventing Invisible Financial Losses</h3>
+  <p>The proposed IoT implementation turns alert management into a <strong>closed-loop, automated response system</strong>:</p>
+  <ul class="report-list">
+    <li>Alert triage and routing is automated via the cloud ERP integration layer: low-stock alerts trigger replenishment workflows; environmental anomaly alerts trigger quality control protocols; unusual movement alerts trigger loss prevention workflows.</li>
+    <li>Alert resolution tracking provides management with KPI-level visibility of operational responsiveness, enabling the Finance Department to quantify the financial cost of unresolved alerts and benchmark improvement over time.</li>
+    <li>Unresolved IoT_Alerts are automatically escalated through the ERP's workflow engine, ensuring accountability and preventing the silent financial leakage that occurs when sensor warnings go unactioned.</li>
+  </ul>
+
+  <h3>3.4 Integration Architecture: IoT and Cloud ERP as a Unified System</h3>
+  <div class="arch-flow">
+    <div class="arch-node">
+      <div class="arch-node-label">Layer 1</div>
+      <div class="arch-node-title">IoT Sensors<br><small style="color:var(--slate);font-size:0.7rem;">RFID · Smart Shelf · Weight</small></div>
+    </div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node">
+      <div class="arch-node-label">Layer 2</div>
+      <div class="arch-node-title">IoT Gateway<br><small style="color:var(--slate);font-size:0.7rem;">Wi-Fi 6 · LPWAN · Edge Logic</small></div>
+    </div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node">
+      <div class="arch-node-label">Layer 3</div>
+      <div class="arch-node-title">Cloud ERP<br><small style="color:var(--slate);font-size:0.7rem;">RESTful API · Inventory Module</small></div>
+    </div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node">
+      <div class="arch-node-label">Layer 4</div>
+      <div class="arch-node-title">Analytics &amp; Reporting<br><small style="color:var(--slate);font-size:0.7rem;">Power BI · Finance Dashboards</small></div>
+    </div>
+  </div>
+  <p>This architecture eliminates the information silos that currently fragment the company's operational and financial data, enabling the integrated, real-time decision-making that management has identified as a strategic priority. The integrated data stream feeds the organisation's Power BI analytics layer, allowing the Finance Department to monitor live operational KPIs — Warehouse_Scans, IoT_Alerts, Order_Fulfilment_Days, On_Time_Delivery_Pct — alongside financial metrics — Gross_Profit_AUD, Actual_vs_Budget_AUD — in a single consolidated reporting environment.</p>
+</section>
+
+<!-- SECTION 4 -->
+<section id="s4" class="section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Cost-Benefit Analysis &amp; Financial Justification</h2>
+  </div>
+  <div class="section-line"></div>
+
+  <h3>4.1 Quantifiable Benefits: Converting Operational Improvements into Financial Value</h3>
+  <ul class="report-list">
+    <li><strong>Gross_Profit_AUD Recovery from Stockout Elimination:</strong> Each Stockout_Flag event represents a quantum of lost Sales_AUD and its associated gross margin contribution. Even a 10–15% reduction in stockout frequency translates into material Gross_Profit_AUD improvement, given the high average transaction values typical of furniture and homewares retail.</li>
+    <li><strong>Labour Cost Reduction from ERP Automation:</strong> Manual inventory updates, order reconciliation, and purchase order processing currently consume significant Finance and Operations Department staff hours. ERP automation releases this capacity for higher-value analytical activities, reducing the implicit cost per transaction and improving operational leverage.</li>
+    <li><strong>Negative Actual_vs_Budget_AUD Variance Reduction:</strong> As ERP_Order_Errors are eliminated and financial data integrity improves, the accuracy of budget-to-actual comparisons will improve commensurately — with downstream benefits for the company's credit standing and management credibility.</li>
+    <li><strong>Service_Tickets Reduction:</strong> Fewer stockouts and faster fulfilment will directly reduce the volume of customer service escalations, lowering operational costs and reducing reputational damage risk.</li>
+    <li><strong>On_Time_Delivery_Pct Improvement → Customer Lifetime Value:</strong> Improved delivery reliability drives customer retention and repeat purchase rates — a financially significant outcome given that the cost of acquiring a new customer substantially exceeds the cost of retaining an existing one.</li>
+  </ul>
+
+  <h3>4.2 Indicative Investment &amp; Return Framework</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Investment Item</th>
+          <th>Est. Cost (Year 1)</th>
+          <th>Est. Annual Benefit</th>
+          <th>Payback Period</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Cloud ERP Implementation (Licensing + Integration)</td>
+          <td>AUD 180,000 – 250,000</td>
+          <td>AUD 320,000+ (reduced errors, labour, shrinkage)</td>
+          <td>~9–12 months</td>
+        </tr>
+        <tr>
+          <td class="td-bold">IoT Sensor Network Rollout (Hardware + Installation)</td>
+          <td>AUD 80,000 – 120,000</td>
+          <td>AUD 150,000+ (stockout prevention, shrinkage control)</td>
+          <td>~8–10 months</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Ongoing SaaS Subscription &amp; Cloud Compute</td>
+          <td>AUD 60,000 p.a.</td>
+          <td>Scalable: offsets on-premise infrastructure costs</td>
+          <td>Ongoing positive ROI</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Staff Training &amp; Change Management</td>
+          <td>AUD 30,000</td>
+          <td>Intangible: error reduction, adoption speed</td>
+          <td>~6 months</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Total Indicative Investment</td>
+          <td>AUD 350,000 – 460,000</td>
+          <td>AUD 470,000+ (conservative estimate)</td>
+          <td>&lt;12 months full ROI</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.75rem;"><em>Note: All figures are indicative estimates based on industry benchmarks for mid-market Australian retail ERP implementations and IoT rollouts. Detailed financial modelling should be completed during the vendor procurement and project scoping phase.</em></p>
+</section>
+
+<!-- SECTION 5 -->
+<section id="s5" class="section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Roadmap for Implementation</h2>
+  </div>
+  <div class="section-line"></div>
+  <p>A phased implementation approach is recommended to manage operational disruption, investment cash flow, and allow for iterative learning and adjustment before full system deployment.</p>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">Phase 1</div>
+        <div class="phase-title">Foundation: Cloud ERP Procurement &amp; Data Migration</div>
+        <div class="phase-time">Months 1 – 3</div>
+      </div>
+      <div class="phase-body">
+        <ul>
+          <li>Issue formal RFP to shortlisted cloud ERP vendors (SAP Business One, Oracle NetSuite, Microsoft Dynamics 365 Business Central) weighted to retail functionality and Australian data sovereignty compliance.</li>
+          <li>Conduct data audit of existing inventory, financial, and supplier records to identify and remediate quality issues prior to migration.</li>
+          <li>Configure ERP financial modules (General Ledger, AP/AR, Budget Management) and integrate with existing Power BI environment for live Actual_vs_Budget_AUD monitoring.</li>
+          <li>Parallel-run legacy and new ERP systems to validate data accuracy before decommissioning legacy processes.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">Phase 2</div>
+        <div class="phase-title">IoT Rollout: Sensor Network Deployment</div>
+        <div class="phase-time">Months 3 – 6</div>
+      </div>
+      <div class="phase-body">
+        <ul>
+          <li>Procure and install RFID portal readers at all warehouse entry/exit points; deploy smart shelf sensors in key stock areas for pilot stores.</li>
+          <li>Integrate IoT sensor network with cloud ERP inventory module via API; configure automated alert rules and replenishment triggers.</li>
+          <li>Establish IoT_Alert response protocols and assign accountability for alert resolution within the Operations team; implement KPI tracking for alert resolution time and stockout incidence rate.</li>
+          <li>Validate Warehouse_Scans data quality against physical stock counts to confirm sensor accuracy before full reliance on automated records.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-num">Phase 3</div>
+        <div class="phase-title">Optimisation &amp; E-commerce Integration</div>
+        <div class="phase-time">Months 6 – 12</div>
+      </div>
+      <div class="phase-body">
+        <ul>
+          <li>Extend cloud ERP inventory data to the e-commerce platform via API, enabling real-time stock availability display — directly improving Website_Visits to Online_Orders conversion by eliminating overselling and backorder scenarios.</li>
+          <li>Activate ERP's demand forecasting module using historical Sales_AUD, Supplier_Lead_Time_Days, and seasonal data to generate AI-assisted replenishment recommendations.</li>
+          <li>Expand Power BI dashboards to incorporate live IoT and ERP data streams, delivering a fully integrated operational and financial monitoring capability.</li>
+          <li>Formal post-implementation review at Month 12: compare Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag incidence, Order_Fulfilment_Days, and Service_Tickets against pre-implementation baselines.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 -->
+<section id="s6" class="section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Risk Assessment &amp; Mitigation Framework</h2>
+  </div>
+  <div class="section-line"></div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Risk</th>
+          <th>Likelihood</th>
+          <th>Impact</th>
+          <th>Mitigation Strategy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">ERP implementation overrun / cost blowout</td>
+          <td><span class="risk-med">Medium</span></td>
+          <td><span class="risk-high">High</span></td>
+          <td>Phased rollout; fixed-price vendor contract with SLA penalties</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Staff resistance to system change</td>
+          <td><span class="risk-high">High</span></td>
+          <td><span class="risk-med">Medium</span></td>
+          <td>Change management program; superuser network; training incentives</td>
+        </tr>
+        <tr>
+          <td class="td-bold">IoT sensor data quality issues (false alerts)</td>
+          <td><span class="risk-low">Low</span></td>
+          <td><span class="risk-med">Medium</span></td>
+          <td>Regular calibration schedule; alert threshold tuning during pilot</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Data migration errors from legacy systems</td>
+          <td><span class="risk-med">Medium</span></td>
+          <td><span class="risk-high">High</span></td>
+          <td>Parallel-run testing period; data validation audit pre-cutover</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Vendor lock-in / cloud dependency</td>
+          <td><span class="risk-low">Low</span></td>
+          <td><span class="risk-high">High</span></td>
+          <td>Multi-cloud architecture; ensure data portability contractually</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 7 -->
+<section id="s7" class="section">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <h2 class="section-title">Strategic Alignment &amp; Discipline-based Considerations</h2>
+  </div>
+  <div class="section-line"></div>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="strategy-title">Theory of Constraints</div>
+      <p class="strategy-text">This investment applies the theory of constraints: the company's capacity to generate Gross_Profit_AUD is constrained not by market demand or product quality, but by operational bottlenecks — stock unavailability and order processing failures. Standard resource allocation theory prescribes directing investment first at the binding constraint, as relaxing non-binding constraints yields no improvement in throughput. The recommended technologies directly remove these binding constraints, making this the highest-expected-value investment available.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-title">Information Economics</div>
+      <p class="strategy-text">Cloud ERP and IoT together constitute an investment in information quality. Information economics establishes that the value of information is proportional to the decisions it enables and the cost of errors it prevents. Real-time inventory data (IoT) and real-time financial data (cloud ERP) allow the company to replace reactive, error-prone manual decision-making with proactive, automated, and systematically optimised responses — the economic value of which compounds over time as the system learns from historical patterns.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-title">Competitive Imperative</div>
+      <p class="strategy-text">The Queensland furniture and homewares retail market is increasingly competitive, with domestic competitors and international e-commerce entrants investing heavily in supply chain digitalisation. The operational failures documented in Part A — stockouts, delayed fulfilment, poor online conversion — are customer-facing service failures that erode brand equity and competitive positioning. The recommended investment should therefore be understood not only as a cost-reduction initiative but as a strategic competitiveness imperative.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8 -->
+<section id="s8" class="section">
+  <div class="section-header">
+    <span class="section-num">08</span>
+    <h2 class="section-title">Closing &amp; Formal Recommendation</h2>
+  </div>
+  <div class="section-line"></div>
+
+  <p>The operational and financial evidence presented across Part A and this Part B proposal establishes a clear and compelling case for the immediate prioritisation of digital transformation investment. The company's current trajectory — characterised by persistent Stockout_Flag events, compounding ERP_Order_Errors, deteriorating On_Time_Delivery_Pct, and widening negative Actual_vs_Budget_AUD variances — is directly and measurably suppressing Gross_Profit_AUD and undermining the Finance Department's capacity to exercise effective financial control.</p>
+
+  <p>The proposed adoption of a Cloud-hosted ERP System and an IoT-enabled Inventory Visibility Network represents a strategically coherent, financially justified, and operationally viable response. The two technologies are architecturally complementary: IoT provides the physical-world data capture layer that feeds real-time, accurate inventory intelligence into the cloud ERP's automated decision-making and financial reporting engine. Together, they eliminate the manual processes, data inconsistencies, and visibility gaps that are the root causes of the company's current operational and financial underperformance.</p>
+
+  <div class="conclusion-box">
+    <h3>Formal Recommendations — Finance &amp; Accounting Department</h3>
+    <p>The Finance &amp; Accounting Department is formally recommended to endorse the following actions:</p>
+    <ol class="reco-list">
+      <li>Approve the allocation of capital and operational budget for Phase 1 ERP procurement, with an indicative budget ceiling of <strong>AUD 250,000</strong> for Year 1 implementation costs.</li>
+      <li>Commission a formal vendor evaluation process for cloud ERP selection, with the Finance Department represented on the evaluation committee to ensure financial reporting requirements are prioritised.</li>
+      <li>Endorse the IoT sensor network rollout as Phase 2 of the implementation, with a budget envelope of <strong>AUD 120,000</strong> and a target completion date of Month 6 from project commencement.</li>
+      <li>Mandate a <strong>Month 12 post-implementation review</strong> with quantitative comparison of pre- and post-implementation values for Gross_Profit_AUD, Actual_vs_Budget_AUD variance, Stockout_Flag incidence rate, Order_Fulfilment_Days, and Service_Tickets volume.</li>
+    </ol>
+    <p style="margin-top:1.25rem; font-style:italic; font-size:0.9rem;">This proposed investment positions the company to recover lost gross profit, restore budget credibility, and build the digital infrastructure necessary to compete effectively in an increasingly digital retail environment. This analyst is available to present these recommendations in further detail and to support the vendor evaluation process upon management request.</p>
+  </div>
+</section>
+
+</div><!-- /content-wrap -->
+
+<footer>
+  <p><span>BUS108</span> · Digital Business Portfolio · Task 2 — Part B &nbsp;|&nbsp; <span>CONFIDENTIAL</span> — Prepared for the Finance &amp; Accounting Department &nbsp;|&nbsp; Queensland-based Retail Chain</p>
+</footer>
+
+</body>
+</html>
