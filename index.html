@@ -764,7 +764,7 @@
       <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
         <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Actual vs. Budget Variance</div>
         <div class="previewable-img-container" onclick="openLightbox(this, 'Clustered Bar Chart tracking location-based operational leakage and budget variances.')">
-          <img src="YOUR_CHART_1_IMAGE_URL.jpg" alt="Actual vs Budget Clustered Bar Chart" class="previewable-img">
+          <img src="https://i.postimg.cc/wB4h1x9h/Screenshot-2026-05-06-220444-(1).png" alt="Actual vs Budget Clustered Bar Chart" class="previewable-img">
         </div>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Clustered Bar Chart tracking location-based operational leakage and budget variances.</p>
       </div>
@@ -772,7 +772,7 @@
       <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
         <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Sales vs. Gross Profit</div>
         <div class="previewable-img-container" onclick="openLightbox(this, 'Line and Clustered Column Chart measuring profit margin erosion over time.')">
-          <img src="YOUR_CHART_2_IMAGE_URL.jpg" alt="Sales vs Gross Profit Line/Column Chart" class="previewable-img">
+          <img src="https://i.postimg.cc/3wxXr0Q9/Screenshot-2026-05-06-220435-(1).png" alt="Sales vs Gross Profit Line/Column Chart" class="previewable-img">
         </div>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Line and Clustered Column Chart measuring profit margin erosion over time.</p>
       </div>
@@ -780,7 +780,7 @@
       <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
         <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Profitability by Channel</div>
         <div class="previewable-img-container" onclick="openLightbox(this, 'Donut Chart showing online vs. physical store performance ratios.')">
-          <img src="YOUR_CHART_3_IMAGE_URL.jpg" alt="Gross Profit by Channel Donut Chart" class="previewable-img">
+          <img src="https://i.postimg.cc/FKCjYFh0/Screenshot-2026-05-06-220451-(1).png" alt="Gross Profit by Channel Donut Chart" class="previewable-img">
         </div>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Donut Chart showing online vs. physical store performance ratios.</p>
       </div>
@@ -789,10 +789,10 @@
   </div>
 </section>
 
-<section id="exec" class="exec-band">
+<section id="exec" class="section" style="background: var(--steel); color: var(--white); padding: 3rem 2rem; border-bottom: none;">
   <div class="exec-band-inner">
-    <div class="exec-label">Executive<br>Summary</div>
-    <div class="exec-text">
+    <div class="exec-label" style="font-family: var(--font-display); font-size: 1.8rem; color: var(--gold-light); line-height: 1.2;">Executive Summary</div>
+    <div style="margin-top: 1rem;">
       <div class="exec-tags">
         <span class="exec-tag">Stockout_Flag</span>
         <span class="exec-tag">ERP_Order_Errors</span>
@@ -800,8 +800,8 @@
         <span class="exec-tag">Actual_vs_Budget_AUD</span>
         <span class="exec-tag">Order_Fulfilment_Days</span>
       </div>
-      <p>This proposal advocates the strategic implementation of two complementary digital technologies: a <strong>Cloud-hosted Enterprise Resource Planning (ERP) System</strong> and an <strong>IoT-enabled Inventory Visibility Network</strong>. Together, they form an integrated digital infrastructure layer that targets the company's most financially damaging operational deficiencies while establishing the data architecture required for future e-commerce integration and predictive analytics.</p>
-      <p>Current operational failures demonstrably suppress Gross_Profit_AUD, inflate Service_Tickets, degrade On_Time_Delivery_Pct, and generate invisible cost leakage. The proposed transformation is projected to deliver measurable ROI within 12 months of full deployment.</p>
+      <p style="font-size: 0.95rem; color: rgba(255,255,255,0.78); margin-bottom: 1rem; line-height: 1.75;">This proposal advocates the strategic implementation of two complementary digital technologies: a <strong>Cloud-hosted Enterprise Resource Planning (ERP) System</strong> and an <strong>IoT-enabled Inventory Visibility Network</strong>. Together, they form an integrated digital infrastructure layer that targets the company's most financially damaging operational deficiencies while establishing the data architecture required for future e-commerce integration and predictive analytics.</p>
+      <p style="font-size: 0.95rem; color: rgba(255,255,255,0.78); margin-bottom: 0; line-height: 1.75;">Current operational failures demonstrably suppress Gross_Profit_AUD, inflate Service_Tickets, degrade On_Time_Delivery_Pct, and generate invisible cost leakage. The proposed transformation is projected to deliver measurable ROI within 12 months of full deployment.</p>
     </div>
   </div>
 </section>
@@ -1258,7 +1258,6 @@
 function openLightbox(element, captionText) {
   var imgSrc = element.getElementsByTagName('img')[0].src;
   
-  // Guard check: do not open if user hasn't replaced placeholder string
   if (imgSrc.includes('YOUR_CHART_')) {
     alert('Placeholder detected. Please replace "YOUR_CHART_X_IMAGE_URL.jpg" with your true direct link from Postimages first!');
     return;
@@ -1278,7 +1277,6 @@ function closeLightbox() {
   modal.classList.remove('show');
 }
 
-// Allow escape key to close image modal workspace
 document.addEventListener('keydown', function(event) {
   if (event.key === "Escape") {
     closeLightbox();
