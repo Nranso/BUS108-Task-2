@@ -316,6 +316,142 @@
     border: 1px solid rgba(44,74,110,0.15);
   }
 
+  /* INTERACTIVE KPI TILES */
+  .kpi-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 2.5rem 0;
+  }
+  .kpi-interactive-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    user-select: none;
+  }
+  .kpi-interactive-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13,27,42,0.08);
+    border-color: var(--accent);
+  }
+  .kpi-interactive-card.active {
+    border-color: var(--gold);
+    background: var(--navy);
+    color: var(--white);
+  }
+  .kpi-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .kpi-interactive-card.active .kpi-label { color: var(--gold-light); }
+  .kpi-value {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .kpi-interactive-card.active .kpi-value { color: var(--white); }
+  .kpi-subtext {
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+  .kpi-interactive-card.active .kpi-subtext { color: var(--ice); }
+  
+  /* INTERACTIVE ACCORDION ROADMAP */
+  .accordion-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+  .accordion-trigger {
+    background: var(--steel);
+    color: var(--white);
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .accordion-trigger:hover { background: var(--navy-mid); }
+  .accordion-title-group { display: flex; flex-direction: column; }
+  .accordion-num-tag { font-family: var(--font-mono); font-size: 9px; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.1em; }
+  .accordion-main-title { font-size: 0.95rem; font-weight: 600; }
+  .accordion-icon { font-size: 1.1rem; transition: transform 0.2s; color: var(--gold-light); }
+  .accordion-item.open .accordion-icon { transform: rotate(90deg); }
+  .accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s cubic-bezier(0, 1, 0, 1);
+    background: var(--white);
+  }
+  .accordion-item.open .accordion-panel { max-height: 1000px; transition: max-height 0.3s ease-in; }
+  .accordion-inner-body { padding: 1.25rem; }
+
+  /* INTERACTIVE ROI SLIDER CALCULATOR */
+  .roi-calculator-box {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin: 2rem 0;
+    border: 1px solid var(--gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  .roi-control-group { margin-bottom: 1.5rem; }
+  .roi-slider-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    font-family: var(--font-mono);
+    margin-bottom: 8px;
+  }
+  .roi-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--navy-light);
+    outline: none;
+  }
+  .roi-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .roi-slider::-webkit-slider-thumb:hover { background: var(--gold-light); }
+  .roi-output-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    background: rgba(255,255,255,0.05);
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .roi-out-card { text-align: center; }
+  .roi-out-label { font-size: 11px; text-transform: uppercase; color: var(--slate); letter-spacing: 0.05em; }
+  .roi-out-val { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--white); }
+  .roi-out-val.highlight { color: var(--gold-light); }
+
   /* TABLES */
   .table-wrap {
     overflow-x: auto;
@@ -435,49 +571,6 @@
     font-weight: 700;
     font-size: 1.1rem;
     line-height: 1.3;
-  }
-
-  /* PHASES */
-  .phase-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
-    margin: 1.5rem 0;
-  }
-  .phase-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .phase-header {
-    padding: 0.875rem 1.25rem;
-    background: var(--steel);
-    color: var(--white);
-  }
-  .phase-num {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--gold-light);
-    letter-spacing: 0.1em;
-    margin-bottom: 2px;
-  }
-  .phase-title { font-size: 0.9rem; font-weight: 600; }
-  .phase-time { font-size: 0.78rem; color: var(--ice); margin-top: 2px; }
-  .phase-body { padding: 1rem 1.25rem; }
-  .phase-body li {
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
-    padding-left: 1rem;
-    position: relative;
-    color: var(--text-body);
-  }
-  .phase-body li::before {
-    content: '·';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: 700;
   }
 
   /* STRATEGIC CARDS */
@@ -753,17 +846,42 @@
 
     <h3 style="margin-top: 0;">1. Executive Briefing Video Presentation</h3>
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: var(--navy); border-radius: 12px; border: 2px solid var(--gold); margin-bottom: 3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-      <iframe src="https://www.youtube.com/embed/Lvo6QyH3S1E" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe> style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/Lvo6QyH3S1E" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
     </div>
 
-    <h3>2. Power BI Analytical Visualisations</h3>
+    <h3>2. High-Level Performance Metrics Insights</h3>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Click on any live core variable tile to read how it explicitly relates back to our primary Power BI visual analytical workspace:</p>
+    
+    <div class="kpi-grid-container">
+      <div class="kpi-interactive-card active" id="tile1" onclick="toggleKpiTile('tile1', 'Brisbane DC Hub Variance', 'This is our largest un-reconciled operational deviation standing at $365,709.95. Click Chart 1 below to visually isolate its geographical breakdown.')">
+        <div class="kpi-label">Primary Variance Outlier</div>
+        <div class="kpi-value">Brisbane DC</div>
+        <div class="kpi-subtext">Click to analyze variance →</div>
+      </div>
+      <div class="kpi-interactive-card" id="tile2" onclick="toggleKpiTile('tile2', 'November Compression', 'Our margin line graph dips lowest here, showing severe profit compression. Click Chart 2 below to view temporal column alignments.')">
+        <div class="kpi-label">Critical Margin Pinch</div>
+        <div class="kpi-value">November</div>
+        <div class="kpi-subtext">Click to analyze timing →</div>
+      </div>
+      <div class="kpi-interactive-card" id="tile3" onclick="toggleKpiTile('tile3', 'Digital E-Commerce Share', 'Online streams control 65.95% of gross profits, indicating that system failures pose an immediate threat to corporate revenues. See Chart 3.')">
+        <div class="kpi-label">Omnichannel Revenue Mix</div>
+        <div class="kpi-value">65.95% Share</div>
+        <div class="kpi-subtext">Click to analyze channel →</div>
+      </div>
+    </div>
+    
+    <div id="kpi-dynamic-textbox" style="background: var(--fog); border-left: 4px solid var(--gold); padding: 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; font-weight: 500; margin-bottom: 3rem;">
+      <strong>Brisbane DC Hub Variance:</strong> This is our largest un-reconciled operational deviation standing at $365,709.95. Click Chart 1 below to visually isolate its geographical breakdown.
+    </div>
+
+    <h3>3. Power BI Analytical Visualisations</h3>
     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Below are high-resolution captures of the 3 primary interactive models used during cross-filtering analysis. <b>Click on any chart to open a full-screen preview.</b></p>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
       
       <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
         <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Actual vs. Budget Variance</div>
-        <div class="previewable-img-container" onclick="openLightbox(this, 'Clustered Bar Chart tracking location-based operational leakage and budget variances.')">
+        <div class="previewable-img-container" onclick="openLightbox(this, 'Clustered Bar Chart tracking location-based operational leakage and budget variances. Highlights Brisbane DC as an outlier with a $365,709.95 variance.')">
           <img src="https://i.postimg.cc/wB4h1x9h/Screenshot-2026-05-06-220444-(1).png" alt="Actual vs Budget Clustered Bar Chart" class="previewable-img">
         </div>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Clustered Bar Chart tracking location-based operational leakage and budget variances.</p>
@@ -771,7 +889,7 @@
 
       <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
         <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Sales vs. Gross Profit</div>
-        <div class="previewable-img-container" onclick="openLightbox(this, 'Line and Clustered Column Chart measuring profit margin erosion over time.')">
+        <div class="previewable-img-container" onclick="openLightbox(this, 'Line and Clustered Column Chart measuring profit margin erosion over time. Points to clear revenue decoupling in November.')">
           <img src="https://i.postimg.cc/3wxXr0Q9/Screenshot-2026-05-06-220435-(1).png" alt="Sales vs Gross Profit Line/Column Chart" class="previewable-img">
         </div>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Line and Clustered Column Chart measuring profit margin erosion over time.</p>
@@ -779,7 +897,7 @@
 
       <div style="background: var(--fog); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
         <div style="font-weight: 600; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; margin-bottom: 10px;">Profitability by Channel</div>
-        <div class="previewable-img-container" onclick="openLightbox(this, 'Donut Chart showing online vs. physical store performance ratios.')">
+        <div class="previewable-img-container" onclick="openLightbox(this, 'Donut Chart showing online vs. physical store performance ratios. Confirms Online holds a critical 65.95% profit share.')">
           <img src="https://i.postimg.cc/FKCjYFh0/Screenshot-2026-05-06-220451-(1).png" alt="Gross Profit by Channel Donut Chart" class="previewable-img">
         </div>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Donut Chart showing online vs. physical store performance ratios.</p>
@@ -1066,11 +1184,35 @@
         </tr>
         <tr>
           <td class="td-bold">Net Payback Period</td>
-          <td>~ 11.1 Months</td>
+          <td id="table-payback-val" class="td-bold" style="color: var(--accent);">11.1 Months</td>
           <td>Calculated by offsetting initial capital outlays against annualized cash flows from efficiency gains and saved sales.</td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="roi-calculator-box">
+    <h4 style="color: var(--gold-light); margin-top:0; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85rem;">Interactive ROI Framework Optimizer</h4>
+    <p style="color: rgba(255,255,255,0.75); font-size: 0.82rem; margin-bottom: 1.25rem;">Move the slider bar to adjust projected process optimization yield. Observe how operational execution velocity alters our expected capital deployment payback timelines in real time:</p>
+    
+    <div class="roi-control-group">
+      <div class="roi-slider-label">
+        <span>Process Efficiency Target</span>
+        <span id="slider-percentage-output">100% (Baseline Target)</span>
+      </div>
+      <input type="range" min="50" max="150" value="100" class="roi-slider" id="roiEfficiencySlider" oninput="calculateDynamicRoi()">
+    </div>
+    
+    <div class="roi-output-grid">
+      <div class="roi-out-card">
+        <div class="roi-out-label">Combined Net Return (Annual)</div>
+        <div class="roi-out-val" id="roi-annual-return-val">$255,000</div>
+      </div>
+      <div class="roi-out-card">
+        <div class="roi-out-label">Calculated Payback Horizon</div>
+        <div class="roi-out-val highlight" id="roi-months-val">11.1 Months</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1080,68 +1222,70 @@
     <h2 class="section-title">Roadmap for Implementation &amp; Project Governance</h2>
   </div>
   <div class="section-line"></div>
-  <p>To avoid operational disruptions, a phased deployment schedule over a 12-month window is recommended, ensuring rigorous testing and data validation before final live handovers.</p>
+  <p style="margin-bottom: 1.5rem;">To avoid operational disruptions, a phased deployment schedule over a 12-month window is recommended, ensuring rigorous testing and data validation before final live handovers. <b>Click on any phase block below to expand target tracking parameters:</b></p>
 
-  <div class="phase-grid">
-    <div class="phase-card">
-      <div class="phase-header">
-        <div class="phase-num">Phase 1</div>
-        <div class="phase-title">Discovery &amp; Financial Ledger Design</div>
-        <div class="phase-time">Months 1 – 3</div>
+  <div style="margin: 1.5rem 0;">
+    
+    <div class="accordion-item open" id="acc1">
+      <div class="accordion-trigger" onclick="toggleAccordion('acc1')">
+        <div class="accordion-title-group">
+          <span class="accordion-num-tag">Phase 1 · Months 1 to 3</span>
+          <span class="accordion-main-title">Discovery &amp; Financial Ledger Design</span>
+        </div>
+        <span class="accordion-icon">&rarr;</span>
       </div>
-      <div class="phase-body">
-        <ul>
-          <li>Map core financial workflows into the ERP framework.</li>
-          <li>Clean historical inventory records before migration.</li>
-          <li>Set up automated validation rules for data entries.</li>
-        </ul>
+      <div class="accordion-panel">
+        <div class="accordion-inner-body">
+          <p style="font-size:0.88rem; margin:0; color:var(--text-body);">Map core financial workflows into the ERP framework. Clean historical inventory records before migration. Set up automated validation rules for data entries.</p>
+        </div>
       </div>
     </div>
 
-    <div class="phase-card">
-      <div class="phase-header">
-        <div class="phase-num">Phase 2</div>
-        <div class="phase-title">IoT Network Infrastructure Deployment</div>
-        <div class="phase-time">Months 4 – 6</div>
+    <div class="accordion-item" id="acc2">
+      <div class="accordion-trigger" onclick="toggleAccordion('acc2')">
+        <div class="accordion-title-group">
+          <span class="accordion-num-tag">Phase 2 · Months 4 to 6</span>
+          <span class="accordion-main-title">IoT Network Infrastructure Deployment</span>
+        </div>
+        <span class="accordion-icon">&rarr;</span>
       </div>
-      <div class="phase-body">
-        <ul>
-          <li>Install physical RFID reader gates across DCs.</li>
-          <li>Tag high-value furniture and homeware pieces.</li>
-          <li>Link real-time sensor streams with ERP modules.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="phase-card">
-      <div class="phase-header">
-        <div class="phase-num">Phase 3</div>
-        <div class="phase-title">System Integration &amp; Live Handover</div>
-        <div class="phase-time">Months 7 – 9</div>
-      </div>
-      <div class="phase-body">
-        <ul>
-          <li>Connect e-commerce platforms for live stock visibility.</li>
-          <li>Run extensive end-to-end trials across supply lines.</li>
-          <li>Train warehouse personnel on modern scanning protocols.</li>
-        </ul>
+      <div class="accordion-panel">
+        <div class="accordion-inner-body">
+          <p style="font-size:0.88rem; margin:0; color:var(--text-body);">Install physical RFID reader gates across regional distribution networks. Tag high-value furniture and homeware pieces. Link real-time sensor streams with centralized cloud ERP endpoints.</p>
+        </div>
       </div>
     </div>
 
-    <div class="phase-card">
-      <div class="phase-header">
-        <div class="phase-num">Phase 4</div>
-        <div class="phase-title">Governance &amp; Variance Optimization</div>
-        <div class="phase-time">Months 10 – 12</div>
+    <div class="accordion-item" id="acc3">
+      <div class="accordion-trigger" onclick="toggleAccordion('acc3')">
+        <div class="accordion-title-group">
+          <span class="accordion-num-tag">Phase 3 · Months 7 to 9</span>
+          <span class="accordion-main-title">System Integration &amp; Live Handover</span>
+        </div>
+        <span class="accordion-icon">&rarr;</span>
       </div>
-      <div class="phase-body">
-        <ul>
-          <li>Enforce automated variance threshold triggers.</li>
-          <li>Audit live Actual_vs_Budget_AUD metrics.</li>
-          <li>Conduct comprehensive 12-month review sessions.</li>
-        </ul>
+      <div class="accordion-panel">
+        <div class="accordion-inner-body">
+          <p style="font-size:0.88rem; margin:0; color:var(--text-body);">Connect e-commerce web layers for live stock tracking visibility. Run extensive end-to-end user evaluation trials across core logistics pathways. Train warehouse staff on upgraded equipment environments.</p>
+        </div>
       </div>
     </div>
+
+    <div class="accordion-item" id="acc4">
+      <div class="accordion-trigger" onclick="toggleAccordion('acc4')">
+        <div class="accordion-title-group">
+          <span class="accordion-num-tag">Phase 4 · Months 10 to 12</span>
+          <span class="accordion-main-title">Governance &amp; Variance Optimization</span>
+        </div>
+        <span class="accordion-icon">&rarr;</span>
+      </div>
+      <div class="accordion-panel">
+        <div class="accordion-inner-body">
+          <p style="font-size:0.88rem; margin:0; color:var(--text-body);">Enforce automated budget alert variance triggers. Audit live performance configurations against Actual_vs_Budget_AUD accounts. Conduct corporate governance optimization reviews.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1255,14 +1399,9 @@
 </footer>
 
 <script>
+/* 1. LIGHTBOX CONTROLLER */
 function openLightbox(element, captionText) {
   var imgSrc = element.getElementsByTagName('img')[0].src;
-  
-  if (imgSrc.includes('YOUR_CHART_')) {
-    alert('Placeholder detected. Please replace "YOUR_CHART_X_IMAGE_URL.jpg" with your true direct link from Postimages first!');
-    return;
-  }
-  
   var modal = document.getElementById('lightboxModal');
   var modalImg = document.getElementById('lightboxImg');
   var modalCaption = document.getElementById('lightboxCaption');
@@ -1277,12 +1416,21 @@ function closeLightbox() {
   modal.classList.remove('show');
 }
 
-document.addEventListener('keydown', function(event) {
-  if (event.key === "Escape") {
-    closeLightbox();
-  }
-});
-</script>
+/* 2. INTERACTIVE KPI TILE TOGGLE */
+function toggleKpiTile(tileId, title, message) {
+  var tiles = document.querySelectorAll('.kpi-interactive-card');
+  tiles.forEach(function(t) { t.classList.remove('active'); });
+  
+  document.getElementById(tileId).classList.add('active');
+  
+  var textBox = document.getElementById('kpi-dynamic-textbox');
+  textBox.innerHTML = "<strong>" + title + ":</strong> " + message;
+}
 
-</body>
-</html>
+/* 3. INTERACTIVE ACCORDION ROADMAP CONTROLLER */
+function toggleAccordion(accId) {
+  var currentItem = document.getElementById(accId);
+  var wasOpen = currentItem.classList.contains('open');
+  
+  var allItems = document.querySelectorAll('.accordion-item');
+  allItems.forEach(function
