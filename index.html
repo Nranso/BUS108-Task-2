@@ -805,6 +805,7 @@
     <li><a href="#s6">Risk Analysis</a></li>
     <li><a href="#s7">Alignment</a></li>
     <li><a href="#s8">Recommendations</a></li>
+    <li><a href="#academic-references">References</a></li>
   </ul>
 </nav>
 
@@ -972,7 +973,7 @@
   <div class="chain-item">
     <div class="chain-icon">📊</div>
     <div class="chain-content">
-      <div class="chain-arrow">Negative <span class="var-tag">Actual_vs_Budget_AUD</span> Variances → Budget Credibility &amp; Strategic Misalignment</div>
+      <div class="chain-arrow">Negative <span class="var-tag">Actual_vs_Budget_AUD</span> Variances codes</div>
       <p class="chain-text">Part A's Clustered Bar Chart identified significant recurring negative variances at specific store and warehouse locations. These variances undermine the reliability of budgetary controls and signal that current financial planning assumptions are systematically misaligned with operational reality — a primary concern for the Finance Department.</p>
     </div>
   </div>
@@ -1037,13 +1038,13 @@
       <span class="tech-card-title">Cloud ERP — Conceptual Foundation</span>
     </div>
     <div class="tech-card-body">
-      <p>An Enterprise Resource Planning (ERP) system integrates the management of core business functions — financial accounting, procurement, inventory, order management, and human resources — within a single, unified data environment. Unlike legacy on-premise systems requiring manual synchronisation across business units, a <strong>cloud-hosted ERP operates on a Software-as-a-Service (SaaS) model</strong> delivered via third-party cloud infrastructure providers such as Microsoft Azure, Amazon Web Services, or Google Cloud Platform.</p>
+      <p>An Enterprise Resource Planning (ERP) system integrates the management of core business functions — financial accounting, procurement, inventory, order management, and human resources — within a single, unified data environment. Unlike legacy on-premise systems requiring manual synchronisation across business units, a <strong>cloud-hosted ERP operates on a Software-as-a-Service (SaaS) model</strong> delivered via third-party cloud infrastructure providers. As analyzed in information systems research, migrating data layers to centralized cloud architectures serves as a definitive source of truth that mitigates transactional risk (Grabski, Leech &amp; Schmidt 2011).</p>
       <p>The architectural distinction is critical: cloud ERP systems leverage distributed computing infrastructure to provide <strong>real-time data synchronisation</strong> across all connected nodes — stores, warehouses, the e-commerce platform, and the finance department — simultaneously. Changes to inventory records, sales transactions, purchase orders, or financial entries propagate instantly across the entire system, eliminating the data latency and version inconsistency that characterises manual or siloed systems.</p>
     </div>
   </div>
 
   <h3>2.1 Elimination of ERP_Order_Errors through Automated Order-to-Cash Processing</h3>
-  <p>The variable ERP_Order_Errors — representing mismatches and processing failures in the company's order cycles — is a direct consequence of manual data entry, disconnected systems, and absent automated validation rules. A modern cloud ERP system addresses this through:</p>
+  <p>The variable ERP_Order_Errors — representing mismatches and processing failures in the company's order cycles — is a direct consequence of manual data entry, disconnected systems, and absent automated validation rules. A modern cloud ERP system addresses this through automated order validation logic that cross-references variables at the point of creation, preventing downstream ledger friction (Grabski, Leech &amp; Schmidt 2011). This architecture operates through:</p>
   <ul class="report-list">
     <li><strong>Automated order validation logic</strong> that cross-references Inventory_On_Hand, Supplier_Lead_Time_Days, and delivery expectations at point of order creation — preventing the downstream processing failures that generate ERP_Order_Errors.</li>
     <li><strong>A single source of truth</strong> for financial and inventory data, ensuring that accounts receivable, accounts payable, and inventory ledgers are always synchronised — eliminating reconciliation gaps that currently consume Finance Department resources.</li>
@@ -1052,15 +1053,15 @@
   <p>From a financial reporting perspective, the elimination of ERP_Order_Errors translates directly into improved accuracy of the Actual_vs_Budget_AUD variance metric, as actual financial performance will no longer be distorted by processing errors, duplicate entries, or incorrectly matched transactions.</p>
 
   <h3>2.2 Real-time Financial Ledger Access and Budget Variance Management</h3>
-  <p>Cloud ERP platforms provide the Finance Department with live access to financial data across all locations, enabling <strong>dynamic variance monitoring</strong> rather than retrospective end-of-period analysis:</p>
+  <p>Cloud ERP platforms provide the Finance Department with live access to financial data across all locations, enabling <strong>dynamic variance monitoring</strong> rather than retrospective end-of-period analysis. Traditional manual ledger workflows inherently create information silos and communication latency, driving the severe negative variances identified at localized distribution centres (Romney &amp; Steinbart 2020). Implementing unified infrastructure allows:</p>
   <ul class="report-list">
-    <li>Managers can identify negative variance locations in real time, allowing corrective action — targeted inventory replenishment, promotional pricing, or cost containment measures — before the variance compounds across a full reporting period.</li>
+    <li>Managers to identify negative variance locations in real time, allowing corrective action — targeted inventory replenishment, promotional pricing, or cost containment measures — before the variance compounds across a full reporting period.</li>
     <li>Automated budget alert thresholds notify relevant stakeholders when variance at any store or warehouse location exceeds a defined tolerance, institutionalising proactive financial governance.</li>
     <li>Financial consolidation across all entities occurs automatically, reducing month-end close cycle duration and staff labour costs associated with manual data aggregation.</li>
   </ul>
 
   <h3>2.3 Supplier Integration and Reduction of Supplier_Lead_Time_Days</h3>
-  <p>Advanced cloud ERP platforms support Electronic Data Interchange (EDI) and API connectivity with supplier systems, enabling:</p>
+  <p>Advanced cloud ERP platforms support Electronic Data Interchange (EDI) and API connectivity with supplier systems, enabling automated procurement loops. By linking system indicators to real-time manufacturing demands, businesses drastically compress lead times and eradicate transactional lag (Waller &amp; Esparza 2020). This mitigates vulnerabilities via:</p>
   <ul class="report-list">
     <li>Automated purchase order generation when inventory levels fall below dynamically calculated reorder points — replacing the manual process that currently introduces delays and contributes to Stockout_Flag events.</li>
     <li>Real-time supplier lead time updates feeding directly into the ERP's demand forecasting module, ensuring replenishment timelines are continuously recalibrated against actual Supplier_Lead_Time_Days.</li>
@@ -1101,13 +1102,13 @@
       <span class="tech-card-title">IoT Visibility — Conceptual Foundation</span>
     </div>
     <div class="tech-card-body">
-      <p>The Internet of Things (IoT) refers to the networked ecosystem of physical sensing and tracking devices — RFID readers, barcode scanners, weight sensors, temperature monitors, and smart shelf units — that capture real-world physical events and transmit them as structured digital data to a centralised platform in real time. In a retail and warehousing context, IoT-enabled inventory visibility transforms the traditionally manual, labour-intensive, and error-prone process of stock counting and tracking into an <strong>automated, continuous, and highly accurate data stream</strong>.</p>
-      <p>The foundational economic principle is the reduction of <strong>information asymmetry</strong> — the gap between what inventory records say and what physically exists on the warehouse floor. Eliminating this asymmetry is estimated by supply chain economists to reduce total inventory carrying costs by <strong>15–30%</strong> while improving service level rates (On_Time_Delivery_Pct) by comparable margins.</p>
+      <p>The Internet of Things (IoT) refers to the networked ecosystem of physical sensing and tracking devices — RFID readers, barcode scanners, weight sensors, and smart shelf units — that capture real-world physical events and transmit them as structured digital data. In a warehousing environment, item-level tracking constructs an automated, continuous data stream that directly enhances operational integration, mitigates supply chain disruptions, and protects bottom-line capital efficiency (De Vass, Shee &amp; Miah 2018).</p>
+      <p>The foundational economic principle is the reduction of information asymmetry between system records and floor realities. Operational delays and data gaps allow discrepancies to compound across distribution centres, creating severe profit erosion (Raman, DeHoratius &amp; Ton 2001).</p>
     </div>
   </div>
 
   <h3>3.1 Mitigation of Stockout_Flag Events via Continuous RFID and Scanning Deployments</h3>
-  <p>The incidence of Stockout_Flag = 1 represents a total breakdown of inventory governance, driving immediate revenue loss and long-term customer churn. An IoT sensor network mitigates stockouts through the following architecture:</p>
+  <p>The incidence of Stockout_Flag = 1 represents a total breakdown of inventory governance, driving immediate revenue loss. This systemic discrepancy manifests as "ghost stock" or phantom inventory—where records indicate items are available on paper, but physical shelves are depleted, sparking rapid cart abandonment across online retail layers (Raman, DeHoratius &amp; Ton 2001). An IoT network mitigates stockouts through the following architecture:</p>
   <div class="arch-flow">
     <div class="arch-node">
       <div class="arch-node-label">Sensing Layer</div>
@@ -1136,7 +1137,7 @@
   </ul>
 
   <h3>3.2 Actionable Resolution of IoT_Alerts and Optimisation of Warehouse_Scans</h3>
-  <p>In the current state, unresolved IoT_Alerts and low Warehouse_Scans indicate underutilized hardware and disconnected operational workflows. The proposed network rectifies this through strict operational integration:</p>
+  <p>In the current state, unresolved IoT_Alerts and low Warehouse_Scans indicate underutilized hardware and disconnected operational workflows. Enforcing item-level RFID scanning paths directly decreases tracking cycle errors, optimizes order fulfillment velocity, and lifts downstream customer service metrics (De Vass, Shee &amp; Miah 2018). The proposed network rectifies this through strict operational integration:</p>
   <ul class="report-list">
     <li><strong>Automated Ticket Generation:</strong> Sensor alerts (e.g., mismatched shelf locations, misplaced pallets) are converted into prioritized operational tasks sent directly to warehouse hand terminals, driving immediate physical corrections.</li>
     <li><strong>Mandatory Scan Gates:</strong> Enforcing automated scanning checkpoints establishes comprehensive chain-of-custody tracking across all transport steps, lowering inventory shrinkage and ensuring accuracy.</li>
@@ -1355,7 +1356,7 @@
   </div>
 </section>
 
-<section id="s8" class="section" style="border-bottom: none;">
+<section id="s8" class="section">
   <div class="section-header">
     <span class="section-num">08</span>
     <h2 class="section-title">Closing &amp; Formal Recommendation</h2>
@@ -1386,6 +1387,33 @@
   </div>
   
   <p style="font-style: italic; color: var(--text-muted); margin-top: 1.5rem;">This proposed investment positions the company to recover lost gross profit, restore budget credibility, and build the digital infrastructure necessary to compete effectively in an increasingly digital retail environment. This analyst is available to present these recommendations in further detail and to support the vendor evaluation process upon management request.</p>
+</section>
+
+<section id="academic-references" class="section" style="border-top: 1px solid var(--border); padding-top: 3.5rem;">
+  <div class="section-header">
+    <span class="section-num">09</span>
+    <h2 class="section-title">Academic Reference List</h2>
+  </div>
+  <div class="section-line"></div>
+  <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">The following peer-reviewed literature and empirical documentation establish the core business information systems methodologies underpinning this proposal in compliance with UniSC Harvard requirements:</p>
+  
+  <ul style="list-style-type: none; padding-left: 0; margin: 0; font-size: 0.9rem; line-height: 1.8;">
+    <li style="margin-bottom: 15px; padding-left: 1.5rem; text-indent: -1.5rem;">
+      De Vass, T, Shee, H &amp; Miah, SJ 2018, 'The effect of “Internet of Things” on supply chain integration and performance: an organisational capability perspective', <i>Australasian Journal of Information Systems</i>, vol. 22, pp. 1-31.
+    </li>
+    <li style="margin-bottom: 15px; padding-left: 1.5rem; text-indent: -1.5rem;">
+      Grabski, SV, Leech, SA &amp; Schmidt, PJ 2011, 'A review of ERP research: a future agenda for accounting information systems', <i>Journal of Information Systems</i>, vol. 25, no. 1, pp. 37-78.
+    </li>
+    <li style="margin-bottom: 15px; padding-left: 1.5rem; text-indent: -1.5rem;">
+      Raman, A, DeHoratius, N &amp; Ton, Z 2001, 'Execution: the missing link in retail operations', <i>California Management Review</i>, vol. 43, no. 3, pp. 136-152.
+    </li>
+    <li style="margin-bottom: 15px; padding-left: 1.5rem; text-indent: -1.5rem;">
+      Romney, MB &amp; Steinbart, PJ 2020, <i>Accounting information systems</i>, 15th edn, Pearson, Boston.
+    </li>
+    <li style="margin-bottom: 15px; padding-left: 1.5rem; text-indent: -1.5rem;">
+      Waller, MA &amp; Esparza, FL 2020, <i>The definitive guide to inventory management: principles and strategies for the efficient flow of goods</i>, Pearson Education, New York.
+    </li>
+  </ul>
 </section>
 
 </div><div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
@@ -1433,4 +1461,40 @@ function toggleAccordion(accId) {
   var wasOpen = currentItem.classList.contains('open');
   
   var allItems = document.querySelectorAll('.accordion-item');
-  allItems.forEach(function
+  allItems.forEach(function(item) { item.classList.remove('open'); });
+  
+  if (!wasOpen) {
+    currentItem.classList.add('open');
+  }
+}
+
+/* 4. DYNAMIC ROI PAYBACK SLIDER CALCULATOR */
+function calculateDynamicRoi() {
+  var slider = document.getElementById('roiEfficiencySlider');
+  var factor = parseFloat(slider.value) / 100;
+  
+  // Base numbers from report data
+  var baseReturn = 255000;
+  var initialCapEx = 185000;
+  
+  // Calculate dynamic outputs
+  var dynamicReturn = baseReturn * factor;
+  var monthlyPayback = (initialCapEx / (dynamicReturn / 12)).toFixed(1);
+  
+  // Update browser displays dynamically
+  document.getElementById('slider-percentage-output').innerText = slider.value + "% efficiency output";
+  document.getElementById('roi-annual-return-val').innerText = "$" + Math.round(dynamicReturn).toLocaleString();
+  document.getElementById('roi-months-val').innerText = monthlyPayback + " Months";
+  
+  // Synchronize main static data table indicator for continuous layout consistency
+  document.getElementById('table-payback-val').innerText = monthlyPayback + " Months";
+}
+
+// Global key controls
+document.addEventListener('keydown', function(event) {
+  if (event.key === "Escape") { closeLightbox(); }
+});
+</script>
+
+</body>
+</html>
